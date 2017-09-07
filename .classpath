@@ -98,5 +98,7 @@
 	<classpathentry kind="lib" path="L:/javaweb/njuTJ/WebContent/WEB-INF/lib/struts2-core-2.3.33.jar"/>
 	<classpathentry kind="lib" path="L:/javaweb/njuTJ/WebContent/WEB-INF/lib/struts2-spring-plugin-2.3.33.jar"/>
 	<classpathentry kind="lib" path="L:/javaweb/njuTJ/WebContent/WEB-INF/lib/xwork-core-2.3.33.jar"/>
+	<classpathentry kind="lib" path="L:/javaweb/njuTJ/WebContent/WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="L:/javaweb/njuTJ/WebContent/WEB-INF/lib/standard.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

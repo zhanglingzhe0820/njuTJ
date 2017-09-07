@@ -23,8 +23,21 @@
 	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<script src="resources/vendor/sb-admin-2/sb-admin-2.min.js"></script>
+	
+	<style>
+		#board{
+			border:solid 5px blue;
+			border-radius:20px;
+			-moz-border-radius:20px;
+			border-radius:20px;
+			-webkit-border-radius:20px;
+			padding:20px;
+			width:100%
+		}
+	</style>
 
 <title>南京大学天健社</title>
+
 </head>
 <body >
 <div class="wrapper">
@@ -47,7 +60,7 @@
 					<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
 				</a>
 				<ul class="dropdown-menu dropdown-users">
-					<li><a href="#"><i class="fa fa-sign-in fa-fw"></i> 登录</a>
+					<li><a href="login.jsp"><i class="fa fa-sign-in fa-fw"></i> 登录</a>
 					</li>
 					<li><a href="logout.action"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
 					</li>
@@ -58,7 +71,17 @@
 	</nav>
 	<div class="fullwidthbanner-container">
 		<div class="fullwidthbanner">
-			<img id="image" style="z-index:-1;width:100%" src="resources/img/photo.jpg" alt=""/>
+			<div id="board">
+				<h3 style="text-align:center">公告栏</h3>
+				<p style="text-align:center">部门设置：活动部 全媒体 人资部 公关部 项目部</p>
+				...<br>
+				...<br>
+				...<br>
+				...<br>
+				...<br>
+				...<br>
+				...<br>
+			</div>
 		</div>
 	</div>
 	<div>
@@ -81,7 +104,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-glass fa-5x"></i>
+                                    <i class="glyphicon glyphicon-fire fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div>传承之民间手工艺进校园</div>
@@ -100,7 +123,7 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success">报名</button>
+                            <button type="button" class="btn btn-success" >报名</button>
                             <button type="button" class="btn btn-danger pull-right">退选</button>
                             <div class="clearfix"></div>
                         </div>
@@ -112,7 +135,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-glass fa-5x"></i>
+                                    <i class="glyphicon glyphicon-fire   fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div>传承之探访南大老教授</div>
@@ -143,7 +166,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-glass fa-5x"></i>
+                                    <i class="glyphicon glyphicon-fire   fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div>传承之南京市博物馆讲解员</div>
@@ -174,7 +197,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-glass fa-5x"></i>
+                                    <i class="glyphicon glyphicon-fire   fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div>风筝节活动</div>
@@ -205,7 +228,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-glass fa-5x"></i>
+                                    <i class="glyphicon glyphicon-fire   fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div>食堂微公益</div>
@@ -236,7 +259,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-glass fa-5x"></i>
+                                    <i class="glyphicon glyphicon-fire   fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div>和园老人探访</div>
@@ -267,7 +290,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-glass fa-5x"></i>
+                                    <i class="glyphicon glyphicon-fire   fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div>蓝天之下</div>
@@ -298,7 +321,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-glass fa-5x"></i>
+                                    <i class="glyphicon glyphicon-fire   fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div>端午节活动</div>
@@ -328,13 +351,13 @@
     
     <div>
 		<div style="text-align:center">
-           	<h2>志愿者活动</h2>
+           	<h2>內建活动</h2>
         </div>
         <hr>
 	</div>
 	
 	<div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-info">
+                    <div class="panel panel-yellow">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -365,11 +388,11 @@
     </div>
 	
 	<div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-info">
+                    <div class="panel panel-yellow">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-glass fa-5x"></i>
+                                    <i class="fa fa-cutlery fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div>羊山公园烧烤</div>

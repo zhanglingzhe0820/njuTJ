@@ -53,6 +53,9 @@
                             <h4 style="text-align:center">登录</h4>
                         </div>
                         <div class="panel-body">
+                        	<div class="alert alert-danger">
+                                必填项为空
+                            </div>
                             <form action="login.action" role="form">
                                 <div class="form-group">
                                     <input class="form-control" placeholder="QQ号" name="qq" type="text" autofocus="">

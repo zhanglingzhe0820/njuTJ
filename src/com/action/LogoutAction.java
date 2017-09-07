@@ -1,21 +1,16 @@
 package com.action;
 
-import org.apache.struts2.interceptor.CookiesAware;
+import javax.servlet.http.Cookie;
 
-public class LogoutAction extends BaseAction implements CookiesAware{
+import org.apache.struts2.ServletActionContext;
+
+public class LogoutAction extends BaseAction{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private java.util.Map<String, String> cookies;
-	
 	public String execute() throws Exception{
-		System.out.println(cookies);
+		ServletActionContext.getResponse().addCookie(new Cookie("njuTJ","none"));;
 		return SUCCESS;
-	}
-
-	@Override
-	public void setCookiesMap(java.util.Map<String, String> cookies) {
-		this.cookies=cookies;
 	}
 
 }
