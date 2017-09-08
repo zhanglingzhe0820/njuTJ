@@ -4,6 +4,6 @@ import com.model.User;
 
 public interface UserDao {
 	
-	public User getUserByName(String name);
-	
+	public User getUserByNumber(String number);
+	public void insertUser(String qq,String phone,String number,String department,String name);
 }

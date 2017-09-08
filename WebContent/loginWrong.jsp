@@ -74,7 +74,7 @@
                             </div>
                             <form action="login.action" role="form">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="学号" name="sNumber" type="text" value="">
+                                    <input class="form-control" placeholder="学号" name="number" type="text" value="">
                                 </div>
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="登录">
                             </form>

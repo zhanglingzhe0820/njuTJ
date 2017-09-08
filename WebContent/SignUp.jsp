@@ -77,7 +77,7 @@
                                     <input class="form-control" placeholder="手机号" name="phone" type="text" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="学号" name="sNumber" type="text" value="">
+                                    <input class="form-control" placeholder="学号" name="number" type="text" value="">
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="院系" name="department" type="text" value="">

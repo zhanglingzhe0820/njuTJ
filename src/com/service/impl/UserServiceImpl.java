@@ -14,16 +14,17 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	
 	@Override
-	public boolean login(String name, String password) {
-		User user=userDao.getUserByName(name);
-		
-		if(user!=null){
-			if(password.equals(user.getPwd())){
-				return true;
-			}
-		}
-		
-		return false;
+	public User login(String number) {
+		User user=userDao.getUserByNumber(number);
+		return user;
 	}
+
+	@Override
+	public boolean signUp(String qq, String phone, String number, String department, String name) {
+		userDao.insertUser(qq,phone,number,department,name);
+		return true;
+	}
+	
+	
 
 }

@@ -69,6 +69,9 @@
                             <h4 style="text-align:center">注册</h4>
                         </div>
                         <div class="panel-body">
+                        <div class="alert alert-danger">
+                                学号不能为空
+                            </div>
                             <form action="login.action" role="form">
                                 <div class="form-group">
                                     <input class="form-control" placeholder="学号" name="number" type="text" value="">

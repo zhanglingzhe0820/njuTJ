@@ -3,15 +3,24 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.model.User" table="tb_user">
+	<class name="com.model.User" table="tb_student">
 		<id name="id" column="id" type="int">
 			<generator class="native"/>
 		</id>
+		<property name="qq" type="string" not-null="true" length="50">
+			<column name="qq"/>
+		</property>
+		<property name="phone" type="string" not-null="true" length="50">
+			<column name="phone"/>
+		</property>
+		<property name="number" type="string" not-null="true" length="50">
+			<column name="number"/>
+		</property>
+		<property name="department" type="string" not-null="true" length="50">
+			<column name="department"/>
+		</property>
 		<property name="name" type="string" not-null="true" length="50">
 			<column name="name"/>
-		</property>
-		<property name="pwd" type="string" not-null="true" length="50">
-			<column name="pwd"/>
 		</property>
 	</class>
 </hibernate-mapping>

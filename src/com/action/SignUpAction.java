@@ -22,16 +22,19 @@ public class SignUpAction extends BaseAction{
 	
 	private String qq;
 	private String phone;
-	private String sNumber;
+	private String number;
 	private String department;
 	private String name;
 	
 	@SuppressWarnings("deprecation")
 	public String execute() throws Exception{
-		Cookie cookie=new Cookie("njuTj",qq+"_"+phone+"_"+URLEncoder.encode(department)+"_"+URLEncoder.encode(name));
-		cookie.setMaxAge(60*60*24);
-		ServletActionContext.getResponse().addCookie(cookie);
-		return SUCCESS;
+		if(userService.signUp(qq, phone, number, department, name)){
+			Cookie cookie=new Cookie("njuTJ",qq+"_"+phone+"_"+number+"_"+URLEncoder.encode(department)+"_"+URLEncoder.encode(name));
+			cookie.setMaxAge(60*60*24);
+			ServletActionContext.getResponse().addCookie(cookie);
+			return SUCCESS;
+		}
+		return ERROR;
 	}
 	
 	public void setQq(String qq){
@@ -50,12 +53,12 @@ public class SignUpAction extends BaseAction{
 		return phone;
 	}
 	
-	public void setSNumber(String sNumber){
-		this.sNumber=sNumber;
+	public void setNumber(String number){
+		this.number=number;
 	}
 	
-	public String getSNumber(){
-		return sNumber;
+	public String getNumber(){
+		return number;
 	}
 	
 	public void setDepartment(String department){
@@ -75,7 +78,7 @@ public class SignUpAction extends BaseAction{
 	}
 	
 	public void validate(){
-		if(qq==null||qq.length()==0||phone==null||phone.length()==0||sNumber==null||sNumber.length()==0||department==null||department.length()==0||name==null||name.length()==0){
+		if(qq==null||qq.length()==0||phone==null||phone.length()==0||number==null||number.length()==0||department==null||department.length()==0||name==null||name.length()==0){
 			this.addActionError("has empty text");
 		}
 		

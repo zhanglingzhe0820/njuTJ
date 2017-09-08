@@ -3,8 +3,11 @@ package com.model;
 public class User {
 	
 	private int id;  
-    private String name;  
-    private String pwd;
+    private String qq;  
+    private String phone;
+    private String number;
+    private String department;
+    private String name;
     
 	public int getId() {
 		return id;
@@ -12,17 +15,44 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
+	public void setQq(String qq){
+		this.qq=qq;
+	}
+	
+	public String getQq(){
+		return qq;
+	}
+	
+	public void setPhone(String phone){
+		this.phone=phone;
+	}
+	
+	public String getPhone(){
+		return phone;
+	}
+	
+	public void setNumber(String number){
+		this.number=number;
+	}
+	
+	public String getNumber(){
+		return number;
+	}
+	
+	public void setDepartment(String department){
+		this.department=department;
+	}
+	
+	public String getDepartment(){
+		return department;
+	}
+	
+	public void setName(String name){
+		this.name=name;
+	}
+	
+	public String getName(){
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}  
     
 }
