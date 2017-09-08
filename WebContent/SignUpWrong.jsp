@@ -23,11 +23,11 @@
 	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<script src="resources/vendor/sb-admin-2/sb-admin-2.min.js"></script>
-<title>南京大学天健社</title>
 
+<title>南京大学天健社</title>
 </head>
-<body >
-<div class="wrapper">
+<body>
+	<div class="wrapper" id="wrapper">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
 			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="index.jsp">南京大学天健社</a>
@@ -59,22 +59,31 @@
 		</ul>
 	</nav>
 	
-	<div style="height:150px"></div>
+	<div style="height:100px"></div>
 	
 	<div class="fullwidthbanner-container">
 		<div style="width:30%;margin:0 auto">
 			<div class="fullwidthbanner">
 				<div class="panel panel-info">
                         <div class="panel-heading">
-                            <h4 style="text-align:center">注册</h4>
+                            <h4 style="text-align:center">登录</h4>
                         </div>
                         <div class="panel-body">
-                        <div class="alert alert-danger">
-                                学号错误，检查是否输入正确，或先注册
+                        	<div class="alert alert-danger">
+                                必填项为空
                             </div>
-                            <form action="login.action" role="form">
+                            <form action="signUp.action" role="form">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="学号" name="sNumber" type="text" value="">
+                                    <input class="form-control" placeholder="QQ号" name="qq" type="text" autofocus="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="手机号" name="phone" type="text" value="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="院系" name="department" type="text" value="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="姓名" name="name" type="text" value="">
                                 </div>
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="登录">
                             </form>
@@ -86,8 +95,10 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> 
 
+
+	
 <div style="text-align:center">
 	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
 		<small>
@@ -95,6 +106,5 @@
 		</small>
 	</p>
 </div>
-
 </body>
 </html>

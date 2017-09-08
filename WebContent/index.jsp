@@ -62,6 +62,8 @@
 				<ul class="dropdown-menu dropdown-users">
 					<li><a href="login.jsp"><i class="fa fa-sign-in fa-fw"></i> 登录</a>
 					</li>
+					<li><a href="SignUp.jsp"><i class="fa fa-list-alt fa-fw"></i> 注册</a>
+					</li>
 					<li><a href="logout.action"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
 					</li>
 				</ul>

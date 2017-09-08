@@ -23,11 +23,11 @@
 	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<script src="resources/vendor/sb-admin-2/sb-admin-2.min.js"></script>
-
 <title>南京大学天健社</title>
+
 </head>
-<body>
-	<div class="wrapper" id="wrapper">
+<body >
+<div class="wrapper">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
 			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="index.jsp">南京大学天健社</a>
@@ -41,30 +41,37 @@
 		<div>
 			<a class="navbar-brand" href="login.jsp">管理员登录</a>
 		</div>
+		<ul class="nav navbar-top-links navbar-right">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+				</a>
+				<ul class="dropdown-menu dropdown-users">
+					<li><a href="login.jsp"><i class="fa fa-sign-in fa-fw"></i> 登录</a>
+					</li>
+					<li><a href="SignUp.jsp"><i class="fa fa-list-alt fa-fw"></i> 注册</a>
+					</li>
+					<li><a href="logout.action"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+					</li>
+				</ul>
+				<!-- /.dropdown-user -->
+			</li>
+		</ul>
 	</nav>
 	
-	<div style="height:100px"></div>
+	<div style="height:150px"></div>
 	
 	<div class="fullwidthbanner-container">
 		<div style="width:30%;margin:0 auto">
 			<div class="fullwidthbanner">
 				<div class="panel panel-info">
                         <div class="panel-heading">
-                            <h4 style="text-align:center">登录</h4>
+                            <h4 style="text-align:center">注册</h4>
                         </div>
                         <div class="panel-body">
                             <form action="login.action" role="form">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="QQ号" name="qq" type="text" autofocus="">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="手机号" name="phone" type="text" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="院系" name="department" type="text" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="姓名" name="name" type="text" value="">
+                                    <input class="form-control" placeholder="学号" name="sNumber" type="text" value="">
                                 </div>
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="登录">
                             </form>
@@ -76,10 +83,8 @@
 			</div>
 		</div>
 	</div>
-</div> 
+</div>
 
-
-	
 <div style="text-align:center">
 	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
 		<small>
@@ -87,5 +92,6 @@
 		</small>
 	</p>
 </div>
+
 </body>
 </html>

@@ -6,12 +6,13 @@
 	<constant name="struts.devMode" value="true"/>
 	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
 	<package name="myPackage" extends="struts-default">
-		<action name="loginform">
-			<result>login.jsp</result>
-		</action>
 		<action name="login" class="com.action.LoginAction">
 			<result name="success">index.jsp</result>
 			<result name="input">loginWrong.jsp</result>
+		</action>
+		<action name="signUp" class="com.action.SignUpAction">
+			<result name="success">index.jsp</result>
+			<result name="input">SignUpWrong.jsp</result>
 		</action>
 		<action name="logout" class="com.action.LogoutAction">
 			<result name="success">index.jsp</result>
