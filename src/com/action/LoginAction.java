@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.model.User;
 import com.service.UserService;
+import com.service.impl.UserServiceImpl;
 
 public class LoginAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Autowired
-	private UserService userService;
+	private UserService userService=new UserServiceImpl();
 	
 	private String number;
 	

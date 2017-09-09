@@ -39,6 +39,8 @@
 		<property name="mappingResources">
 			<list>
 				<value>com/model/User.hbm.xml</value>
+				<value>com/model/Event.hbm.xml</value>
+				<value>com/model/EventAmount.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -71,9 +73,5 @@
 			pointcut="(execution(* com.dao.impl.*.*(..))) OR execution(* com.service.impl.*.*(..))"
 			advice-ref="txAdvice" />
 	</aop:config>
-	
-	<context:component-scan base-package="com">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
 	
 </beans>

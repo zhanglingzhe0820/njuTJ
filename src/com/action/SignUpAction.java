@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.service.UserService;
+import com.service.impl.UserServiceImpl;
 
 public class SignUpAction extends BaseAction{
 
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Autowired
-	private UserService userService;
+	private UserService userService=new UserServiceImpl();
 	
 	private String qq;
 	private String phone;

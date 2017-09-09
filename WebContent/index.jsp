@@ -39,7 +39,7 @@
 <title>南京大学天健社</title>
 
 </head>
-<body >
+<body onLoad="load()">
 <div class="wrapper">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
@@ -102,7 +102,7 @@
 	
 	<div>
 	<div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" id="minJian">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -112,7 +112,7 @@
                                     <div>传承之民间手工艺进校园</div>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge" id="minJianNumber">26</div>
                                     <div>报名人数</div>
                                 </div>
                             </div>
@@ -125,15 +125,15 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success" >报名</button>
-                            <button type="button" class="btn btn-danger pull-right">退选</button>
+                            <button type="button" class="btn btn-success" onClick='register("minJian");'>报名</button>
+                            <button type="button" class="btn btn-danger pull-right" onClick='drop("minJian");'>退选</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
     </div>
     
     <div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" id="tanFang">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -143,7 +143,7 @@
                                     <div>传承之探访南大老教授</div>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge" id="tanFangNumber">26</div>
                                     <div>报名人数</div>
                                 </div>
                             </div>
@@ -156,15 +156,15 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success">报名</button>
-                            <button type="button" class="btn btn-danger pull-right">退选</button>
+                            <button type="button" class="btn btn-success" onClick='register("tanFang");'>报名</button>
+                            <button type="button" class="btn btn-danger pull-right" onClick='drop("tanFang");'>退选</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
     </div>
     
     <div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" id="shiBo">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -174,7 +174,7 @@
                                     <div>传承之南京市博物馆讲解员</div>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge" id="shiBoNumber">26</div>
                                     <div>报名人数</div>
                                 </div>
                             </div>
@@ -187,15 +187,15 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success">报名</button>
-                            <button type="button" class="btn btn-danger pull-right">退选</button>
+                            <button type="button" class="btn btn-success" onClick='register("shiBo");'>报名</button>
+                            <button type="button" class="btn btn-danger pull-right" onClick='drop("shiBo");'>退选</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
     </div>
     
     <div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" id="fengZheng">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -205,7 +205,7 @@
                                     <div>风筝节活动</div>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge" id="fengZhengNumber">26</div>
                                     <div>报名人数</div>
                                 </div>
                             </div>
@@ -218,15 +218,15 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success">报名</button>
-                            <button type="button" class="btn btn-danger pull-right">退选</button>
+                            <button type="button" class="btn btn-success" onClick='register("fengZheng");'>报名</button>
+                            <button type="button" class="btn btn-danger pull-right" onClick='drop("fengZheng");'>退选</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
     </div>
     
     <div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" id="shiTang">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -236,7 +236,7 @@
                                     <div>食堂微公益</div>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge" id="shiTangNumber">26</div>
                                     <div>报名人数</div>
                                 </div>
                             </div>
@@ -249,15 +249,15 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success">报名</button>
-                            <button type="button" class="btn btn-danger pull-right">退选</button>
+                            <button type="button" class="btn btn-success" onClick='register("shiTang");'>报名</button>
+                            <button type="button" class="btn btn-danger pull-right" onClick='drop("shiTang");'>退选</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
     </div>
     
     <div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" id="heYuan">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -267,7 +267,7 @@
                                     <div>和园老人探访</div>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge" id="heYuanNumber">26</div>
                                     <div>报名人数</div>
                                 </div>
                             </div>
@@ -280,15 +280,15 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success">报名</button>
-                            <button type="button" class="btn btn-danger pull-right">退选</button>
+                            <button type="button" class="btn btn-success" onClick='register("heYuan");'>报名</button>
+                            <button type="button" class="btn btn-danger pull-right" onClick='drop("heYuan");'>退选</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
     </div>
     
     <div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" id="lanTian">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -298,7 +298,7 @@
                                     <div>蓝天之下</div>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge" id="lanTianNumber">26</div>
                                     <div>报名人数</div>
                                 </div>
                             </div>
@@ -311,15 +311,15 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success">报名</button>
-                            <button type="button" class="btn btn-danger pull-right">退选</button>
+                            <button type="button" class="btn btn-success" onClick='register("lanTian");'>报名</button>
+                            <button type="button" class="btn btn-danger pull-right" onClick='drop("lanTian");'>退选</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
     </div>
     
     <div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" id="duanWu">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -329,7 +329,7 @@
                                     <div>端午节活动</div>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge" id="duanWuNumber">26</div>
                                     <div>报名人数</div>
                                 </div>
                             </div>
@@ -342,8 +342,8 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success">报名</button>
-                            <button type="button" class="btn btn-danger pull-right">退选</button>
+                            <button type="button" class="btn btn-success" onClick='register("duanWu");'>报名</button>
+                            <button type="button" class="btn btn-danger pull-right" onClick='drop("duanWu");'>退选</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -359,7 +359,7 @@
 	</div>
 	
 	<div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-yellow">
+                    <div class="panel panel-yellow" id="_luYing">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -369,7 +369,7 @@
                                     <div>玄武湖露营</div>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge" id="_luYingNumber">26</div>
                                     <div>报名人数</div>
                                 </div>
                             </div>
@@ -382,15 +382,15 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success">报名</button>
-                            <button type="button" class="btn btn-danger pull-right">退选</button>
+                            <button type="button" class="btn btn-success" onClick='register("_luYing");'>报名</button>
+                            <button type="button" class="btn btn-danger pull-right" onClick='drop("_luYing");'>退选</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
     </div>
 	
 	<div class="col-lg-3 col-md-6" style="z-index:1">
-                    <div class="panel panel-yellow">
+                    <div class="panel panel-yellow" id="_shaoKao">
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -400,7 +400,7 @@
                                     <div>羊山公园烧烤</div>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge" id="_shaoKaoNumber">26</div>
                                     <div>报名人数</div>
                                 </div>
                             </div>
@@ -413,8 +413,8 @@
                             </div>
                         </a>
                         <div class="panel-footer">
-                            <button type="button" class="btn btn-success">报名</button>
-                            <button type="button" class="btn btn-danger pull-right">退选</button>
+                            <button type="button" class="btn btn-success" onClick='register("_shaoKao");'>报名</button>
+                            <button type="button" class="btn btn-danger pull-right" onClick='drop("_shaoKao");'>退选</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -431,4 +431,152 @@
 </div>
 
 </body>
+<script>
+	function load(){
+		var xmlHttp;
+		var cookies=document.cookie.split(";");
+		var number;
+		var i;
+		var temp;
+		var event;
+		
+		if(window.XMLHttpRequest){
+			xmlHttp=new XMLHttpRequest();
+		}
+		else{
+			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xmlHttp.onreadystatechange=function(){
+			if(xmlHttp.readyState==4&&xmlHttp.status==200){
+				if(xmlHttp.responseText!="none"&&xmlHttp.responseText!=""&&xmlHttp.responseText!="error"){
+					var events=xmlHttp.responseText.split("|");
+					for(i=0;i<events.length;i++){
+						document.getElementById(events[i]).className="panel panel-green";
+					}
+				}
+			}
+		}
+		
+		for(i=0;i<cookies.length;i++){
+			temp=cookies[i].split("=");
+			if(temp[0]=="njuTJ"){
+				if(temp[1]=="none"){
+					break;
+				}
+				else{
+					number=temp[1].split("_")[2];
+					xmlHttp.open("POST","/njuTJ/LoadServlet",true);
+					xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+					xmlHttp.send("number="+number);
+				}
+				break;
+			}
+		}
+	}
+	
+	function register(id){
+		var xmlHttp;
+		var cookies=document.cookie.split(";");
+		var number;
+		var i;
+		var temp;
+		if(window.XMLHttpRequest){
+			xmlHttp=new XMLHttpRequest();
+		}
+		else{
+			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xmlHttp.onreadystatechange=function(){
+			if(xmlHttp.readyState==4&&xmlHttp.status==200){
+				if(xmlHttp.responseText=="success"){
+					document.getElementById(id).className="panel panel-green";
+					document.getElementById(id+"Number").innerHTML=parseInt(document.getElementById(id+"Number").innerHTML)+1;
+				}
+				else if(xmlHttp.responseText=="already"){
+					document.getElementById(id).className="panel panel-green";
+					alert("请勿重复报名");
+				}
+				else{
+					alert("报名失败，请稍后重试");
+				}
+			}
+		}
+		
+		for(i=0;i<cookies.length;i++){
+			temp=cookies[i].split("=");
+			if(temp[0]=="njuTJ"){
+				if(temp[1]=="none"){
+					alert("请先登录");
+				}
+				else{
+					number=temp[1].split("_")[2];
+					xmlHttp.open("POST","/njuTJ/RegisterServlet",true);
+					xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+					xmlHttp.send("event="+id+"&"+"number="+number);
+				}
+				break;
+			}
+		}
+		if(i==cookies.length){
+			alert("请先登录");
+		}
+	}
+	
+	function drop(id){
+		if(document.getElementById(id).className=="panel panel-green"){
+			var xmlHttp;
+			var cookies=document.cookie.split(";");
+			var number;
+			var i;
+			var temp;
+			if(window.XMLHttpRequest){
+				xmlHttp=new XMLHttpRequest();
+			}
+			else{
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			
+			xmlHttp.onreadystatechange=function(){
+				if(xmlHttp.readyState==4&&xmlHttp.status==200){
+					if(xmlHttp.responseText=="success"){
+						if(id[0]=="_"){
+							document.getElementById(id).className="panel panel-yellow";
+						}
+						else{
+							document.getElementById(id).className="panel panel-primary";
+						}
+						document.getElementById(id+"Number").innerHTML=document.getElementById(id+"Number").innerHTML-1;
+					}
+					else if(xmlHttp.responseText=="fail"){
+						alert("您未报名");
+					}
+					else{
+						alert("退选失败，请稍后重试");
+					}
+				}
+			}
+			
+			for(i=0;i<cookies.length;i++){
+				temp=cookies[i].split("=");
+				if(temp[0]=="njuTJ"){
+					if(temp[1]=="none"){
+						alert("请先登录");
+					}
+					else{
+						number=temp[1].split("_")[2];
+						xmlHttp.open("POST","/njuTJ/DropServlet",true);
+						xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+						xmlHttp.send("event="+id+"&"+"number="+number);
+					}
+					break;
+				}
+			}
+			if(i==cookies.length){
+				alert("请先登录");
+			}
+		}
+	}
+</script>
 </html>
