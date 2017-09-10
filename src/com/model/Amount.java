@@ -1,6 +1,6 @@
 package com.model;
 
-public class EventAmount {
+public class Amount {
 
 	private int id;
 	private String event;

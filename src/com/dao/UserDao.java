@@ -9,5 +9,5 @@ public interface UserDao {
 	public boolean register(String event,String number);
 	public boolean drop(String event,String number);
 	public String load(String number);
-	public int getAmountByEvent(String event);
+	public String loadAmount();
 }

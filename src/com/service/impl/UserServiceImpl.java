@@ -65,12 +65,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int loadAmount(String event) {
+	public String loadAmount() {
 		try{
-			return userDao.getAmountByEvent(event);
+			return userDao.loadAmount();
 		}
 		catch(Exception e){
-			return -1;
+			return "error";
 		}
 	}
 }

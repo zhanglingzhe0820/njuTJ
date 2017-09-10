@@ -22,7 +22,7 @@ public class AmountServlet extends HttpServlet {
 	}
 	
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
-		int result=userService.loadAmount(request.getParameter("event"));
+		String result=userService.loadAmount();
 		PrintWriter out=response.getWriter();
 		out.write(result);
 		out.flush();

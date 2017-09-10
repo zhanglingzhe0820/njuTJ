@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.model.Event" table="tb_eventAmount">
+	<class name="com.model.Amount" table="tb_eventAmount">
 		<id name="id" column="id" type="int">
 			<generator class="native"/>
 		</id>

@@ -66,7 +66,7 @@
 			<div class="fullwidthbanner">
 				<div class="panel panel-info">
                         <div class="panel-heading">
-                            <h4 style="text-align:center">注册</h4>
+                            <h4 style="text-align:center">登录</h4>
                         </div>
                         <div class="panel-body">
                         <div class="alert alert-danger">

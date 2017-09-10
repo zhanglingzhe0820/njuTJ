@@ -2,19 +2,16 @@ package com.dao.impl;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
 
 import com.dao.UserDao;
+import com.model.Amount;
 import com.model.Event;
-import com.model.EventAmount;
 import com.model.User;
 
 @Repository(value = "userDao")
@@ -108,8 +105,8 @@ public class UserDaoImpl implements UserDao {
 		Query q=session.createQuery(hql);
 		q.setParameter(0, number);
 		list=q.list();
+		session.close();
 		if(list==null||list.isEmpty()){
-			session.close();
 			return "none";
 		}
 		else{
@@ -118,26 +115,32 @@ public class UserDaoImpl implements UserDao {
 				result.append(((Event)ev).getEvent());
 				result.append("|");
 			}
-			session.close();
 			return new String(result.substring(0,result.length()-1).toCharArray());
 		}
 	}
 
 	@Override
-	public int getAmountByEvent(String event) {
+	public String loadAmount() {
 		Session session=sessionFactory.openSession();
 		List<Object> list;
 		
-		String hql="from EventAmount eva where eva.event=?";
+		String hql="from Amount";
 		Query q=session.createQuery(hql);
-		q.setParameter(0, event);
 		list= q.list();
 		session.close();
+		
+		StringBuilder result=new StringBuilder();
 		if(list==null||list.isEmpty()){
-			return 0;
+			return "none";
 		}
 		else{
-			return list.size();
+			for(Object eva:list){
+				result.append(((Amount)eva).getEvent());
+				result.append("|");
+				result.append(((Amount)eva).getAmount());
+				result.append("|");
+			}
+			return new String(result.substring(0,result.length()-1).toCharArray());
 		}
 	}
 	
@@ -145,12 +148,12 @@ public class UserDaoImpl implements UserDao {
 		Session session=sessionFactory.openSession();
 		List<Object> list;
 		
-		String hql="from EventAmount eva where eva.event=?";
+		String hql="from Amount eva where eva.event=?";
 		Query q=session.createQuery(hql);
 		q.setParameter(0, event);
 		list= q.list();
-		int toUpdate=((EventAmount) list.get(0)).getAmount()+1;
-		hql="update EventAmount eva set eva.amount=? where eva.event=?";
+		int toUpdate=((Amount) list.get(0)).getAmount()+1;
+		hql="update Amount eva set eva.amount=? where eva.event=?";
 		q=session.createQuery(hql);
 		q.setParameter(0, toUpdate);
 		q.setParameter(1, event);
@@ -162,12 +165,12 @@ public class UserDaoImpl implements UserDao {
 		Session session=sessionFactory.openSession();
 		List<Object> list;
 		
-		String hql="from EventAmount eva where eva.event=?";
+		String hql="from Amount eva where eva.event=?";
 		Query q=session.createQuery(hql);
 		q.setParameter(0, event);
 		list= q.list();
-		int toUpdate=((EventAmount) list.get(0)).getAmount()-1;
-		hql="update EventAmount eva set eva.amount=? where eva.event=?";
+		int toUpdate=((Amount) list.get(0)).getAmount()-1;
+		hql="update Amount eva set eva.amount=? where eva.event=?";
 		q=session.createQuery(hql);
 		q.setParameter(0, toUpdate);
 		q.setParameter(1, event);

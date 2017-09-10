@@ -9,5 +9,5 @@ public interface UserService {
 	public String register(String event,String number);
 	public String drop(String event,String number);
 	public String load(String number);
-	public int loadAmount(String event);
+	public String loadAmount();
 }

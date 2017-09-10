@@ -429,16 +429,38 @@
 		</small>
 	</p>
 </div>
-
 </body>
 <script>
 	function load(){
+		var xml;
 		var xmlHttp;
 		var cookies=document.cookie.split(";");
 		var number;
 		var i;
 		var temp;
 		var event;
+		
+		if(window.XMLHttpRequest){
+			xml=new XMLHttpRequest();
+		}
+		else{
+			xml=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xml.onreadystatechange=function(){
+			if(xml.readyState==4&&xml.status==200){
+				if(xml.responseText!="none"&&xml.responseText!=""&&xml.responseText!="error"){
+					temp=xml.responseText;
+					events=temp.split("|");
+					for(i=0;i<events.length;i+=2){
+						document.getElementById(events[i]+"Number").innerHTML=events[i+1];
+					}
+				}
+			}
+		}
+		
+		xml.open("GET","/njuTJ/AmountServlet",true);
+		xml.send();
 		
 		if(window.XMLHttpRequest){
 			xmlHttp=new XMLHttpRequest();

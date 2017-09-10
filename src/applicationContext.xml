@@ -40,7 +40,7 @@
 			<list>
 				<value>com/model/User.hbm.xml</value>
 				<value>com/model/Event.hbm.xml</value>
-				<value>com/model/EventAmount.hbm.xml</value>
+				<value>com/model/Amount.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
