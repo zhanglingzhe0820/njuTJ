@@ -13,5 +13,8 @@
 		<property name="number" type="string" not-null="true" length="50">
 			<column name="number"/>
 		</property>
+		<property name="time" type="int" not-null="true">
+			<column name="time"/>
+		</property>
 	</class>
 </hibernate-mapping>

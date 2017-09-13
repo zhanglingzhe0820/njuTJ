@@ -18,5 +18,10 @@
 		<action name="logout" class="com.action.LogoutAction">
 			<result name="success">index.jsp</result>
 		</action>
+		<action name="adminLogin" class="com.action.AdminLoginAction">
+			<result name="success">adminArrange.jsp</result>
+			<result name="input">adminLoginEmpty.jsp</result>
+			<result name="error">adminLoginWrong.jsp</result>
+		</action>
 	</package>
 </struts>

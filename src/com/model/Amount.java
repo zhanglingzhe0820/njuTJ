@@ -5,6 +5,9 @@ public class Amount {
 	private int id;
 	private String event;
 	private int amount;
+	private int canRegister;
+	private int recentTime;
+	private String realName;
 	
 	public void setId(int id){
 		this.id=id;
@@ -28,5 +31,29 @@ public class Amount {
 	
 	public int getAmount(){
 		return amount;
+	}
+	
+	public void setCanRegister(int canRegister){
+		this.canRegister=canRegister;
+	}
+	
+	public int getCanRegister(){
+		return canRegister;
+	}
+	
+	public void setRecentTime(int recentTime){
+		this.recentTime=recentTime;
+	}
+	
+	public int getRecentTime(){
+		return recentTime;
+	}
+	
+	public void setRealName(String realName){
+		this.realName=realName;
+	}
+	
+	public String getRealName(){
+		return realName;
 	}
 }

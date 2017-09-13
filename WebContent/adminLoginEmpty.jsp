@@ -39,7 +39,7 @@
 			<a class="navbar-brand" href="index.jsp">招新报名</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="adminLogin.jsp">管理员登录</a>
+			<a class="navbar-brand" href="login.jsp">管理员登录</a>
 		</div>
 		<ul class="nav navbar-top-links navbar-right">
 			<li class="dropdown">
@@ -66,15 +66,18 @@
 			<div class="fullwidthbanner">
 				<div class="panel panel-info">
                         <div class="panel-heading">
-                            <h4 style="text-align:center">登录</h4>
+                            <h4 style="text-align:center">管理员登录</h4>
                         </div>
                         <div class="panel-body">
-                        <div class="alert alert-danger">
-                                学号不能为空
+                        	<div class="alert alert-danger">
+                               必填项为空
                             </div>
-                            <form action="login.action" role="form">
+                            <form action="adminLogin.action" role="form">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="学号" name="number" type="text" value="">
+                                    <input class="form-control" placeholder="账号" name="username" type="text" value="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="密码" name="password" type="password" value="">
                                 </div>
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="登录">
                             </form>

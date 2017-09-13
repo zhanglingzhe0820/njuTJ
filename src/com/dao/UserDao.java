@@ -10,4 +10,7 @@ public interface UserDao {
 	public boolean drop(String event,String number);
 	public String load(String number);
 	public String loadAmount();
+	public boolean stopRegister(String recentTime,String event);
+	public boolean startRegister(String recentTime, String event);
+	public String loadArrange();
 }

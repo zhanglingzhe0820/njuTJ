@@ -5,8 +5,6 @@ import java.net.URLEncoder;
 import javax.servlet.http.Cookie;
 
 import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.model.User;
 import com.service.UserService;
 import com.service.impl.UserServiceImpl;

@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>njuTJ</display-name>
-  
   <context-param>
-	<param-name>contextConfigLocation</param-name>
-	<param-value>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
 		classpath:applicationContext.xml
 	</param-value>
   </context-param>
-  
-  <!-- ssh 中文过滤 -->
-	<filter>
-		<filter-name>characterEncoding</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>utf-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>characterEncoding</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-  
+  <filter>
+    <filter-name>characterEncoding</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>characterEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -35,54 +31,73 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-  	<servlet-name>RegisterServlet</servlet-name>
-  	<servlet-class>com.servlet.RegisterServlet</servlet-class>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.servlet.RegisterServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>RegisterServlet</servlet-name>
-  	<url-pattern>/RegisterServlet</url-pattern>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>DropServlet</servlet-name>
-  	<servlet-class>com.servlet.DropServlet</servlet-class>
+    <servlet-name>DropServlet</servlet-name>
+    <servlet-class>com.servlet.DropServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>DropServlet</servlet-name>
-  	<url-pattern>/DropServlet</url-pattern>
+    <servlet-name>DropServlet</servlet-name>
+    <url-pattern>/DropServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>LoadServlet</servlet-name>
-  	<servlet-class>com.servlet.LoadServlet</servlet-class>
+    <servlet-name>LoadServlet</servlet-name>
+    <servlet-class>com.servlet.LoadServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>LoadServlet</servlet-name>
-  	<url-pattern>/LoadServlet</url-pattern>
+    <servlet-name>LoadServlet</servlet-name>
+    <url-pattern>/LoadServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-  	<servlet-name>AmountServlet</servlet-name>
-  	<servlet-class>com.servlet.AmountServlet</servlet-class>
+    <servlet-name>AmountServlet</servlet-name>
+    <servlet-class>com.servlet.AmountServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>AmountServlet</servlet-name>
-  	<url-pattern>/AmountServlet</url-pattern>
+    <servlet-name>AmountServlet</servlet-name>
+    <url-pattern>/AmountServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>StartRegisterServlet</servlet-name>
+    <servlet-class>com.servlet.StartRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StartRegisterServlet</servlet-name>
+    <url-pattern>/StartRegisterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>StopRegisterServlet</servlet-name>
+    <servlet-class>com.servlet.StopRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StopRegisterServlet</servlet-name>
+    <url-pattern>/StopRegisterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ArrangeServlet</servlet-name>
+    <servlet-class>com.servlet.ArrangeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ArrangeServlet</servlet-name>
+    <url-pattern>/ArrangeServlet</url-pattern>
+  </servlet-mapping>
+
   
   <filter>
-  	<filter-name>struts2</filter-name>
-  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
   </filter>
   <filter-mapping>
-  	<filter-name>struts2</filter-name>
-  	<url-pattern>*.action</url-pattern>
+    <filter-name>struts2</filter-name>
+    <url-pattern>*.action</url-pattern>
   </filter-mapping>
-  
-   <listener>
-      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-   </listener>
-  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
 </web-app>

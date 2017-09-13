@@ -10,4 +10,7 @@ public interface UserService {
 	public String drop(String event,String number);
 	public String load(String number);
 	public String loadAmount();
+	public String loadArrange();
+	public boolean startRegister(String recentTime,String event);
+	public boolean stopRegister(String recentTime,String event);
 }

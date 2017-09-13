@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		catch(Exception e){
+			e.printStackTrace();
 			return "error";
 		}
 	}
@@ -50,6 +51,7 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		catch(Exception e){
+			e.printStackTrace();
 			return "error";
 		}		
 	}
@@ -70,6 +72,39 @@ public class UserServiceImpl implements UserService {
 			return userDao.loadAmount();
 		}
 		catch(Exception e){
+			e.printStackTrace();
+			return "error";
+		}
+	}
+
+	@Override
+	public boolean startRegister(String recentTime,String event) {
+		try{
+			return userDao.startRegister(recentTime,event);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean stopRegister(String recentTime,String event) {
+		try{
+			return userDao.stopRegister(recentTime,event);
+		}
+		catch(Exception e){
+			return false;
+		}
+	}
+
+	@Override
+	public String loadArrange() {
+		try{
+			return userDao.loadArrange();
+		}
+		catch(Exception e){
+			e.printStackTrace();
 			return "error";
 		}
 	}

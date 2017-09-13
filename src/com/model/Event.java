@@ -5,6 +5,7 @@ public class Event {
 	private int id;
 	private String event;
 	private String number;
+	private int time;
 	
 	public void setId(int id){
 		this.id=id;
@@ -28,6 +29,14 @@ public class Event {
 	
 	public String getNumber(){
 		return number;
+	}
+	
+	public void setTime(int time){
+		this.time=time;
+	}
+	
+	public int getTime(){
+		return time;
 	}
 
 }

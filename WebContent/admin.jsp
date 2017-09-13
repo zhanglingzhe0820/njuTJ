@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,72 +23,27 @@
 	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<script src="resources/vendor/sb-admin-2/sb-admin-2.min.js"></script>
-	
-	<style>
-		#board{
-			border:solid 5px blue;
-			border-radius:20px;
-			-moz-border-radius:20px;
-			border-radius:20px;
-			-webkit-border-radius:20px;
-			padding:20px;
-			width:100%
-		}
-	</style>
-
 <title>南京大学天健社</title>
-
 </head>
-<body onLoad="load()">
+<body onload="load();">
 <div class="wrapper">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
-			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="index.jsp">南京大学天健社</a>
+			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="adminArrange.jsp">南京大学天健社</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="index.jsp">报名活动</a>
+			<a class="navbar-brand" href="adminArrange.jsp">活动统计</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="index.jsp">招新报名</a>
+			<a class="navbar-brand" href="admin.jsp">活动管理</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="adminLogin.jsp">管理员登录</a>
+			<a class="navbar-brand" href="index.jsp">管理员登出</a>
 		</div>
-		<ul class="nav navbar-top-links navbar-right">
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-					<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-				</a>
-				<ul class="dropdown-menu dropdown-users">
-					<li><a href="login.jsp"><i class="fa fa-sign-in fa-fw"></i> 登录</a>
-					</li>
-					<li><a href="SignUp.jsp"><i class="fa fa-list-alt fa-fw"></i> 注册</a>
-					</li>
-					<li><a href="logout.action"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
-					</li>
-				</ul>
-				<!-- /.dropdown-user -->
-			</li>
-		</ul>
 	</nav>
-	<div class="fullwidthbanner-container">
-		<div class="fullwidthbanner">
-			<div id="board">
-				<h3 style="text-align:center">公告栏</h3>
-				<p style="text-align:center">招新<br>
-				<p style="text-align:center">部门设置：活动部 全媒体 人资部 公关部 项目部</p><br>
-				<p style="text-align:center">13号宣讲</p><br>
-				<p style="text-align:center">16、17面试</p><br>
-				<p style="text-align:center">17年公益路漫漫</p><br>
-				<p style="text-align:center"></p><br>
-				<p style="text-align:center">服务社会，奉献爱心</p><br>
-				<p style="text-align:center">推己及人，薪火相传</p><br>
-			</div>
-		</div>
-	</div>
 	<div>
 		<div>
-			<h1>报名活动</h1>
+			<h1>活动管理</h1>
 			<hr>
 		</div>
 	</div>
@@ -111,10 +66,10 @@
 	</div>
 	
 	<div id="inner">
-	</div>
+    </div>
 </div> 
-
 	
+
 <div style="text-align:center">
 	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
 		<small>
@@ -129,8 +84,6 @@
 <script>
 	function load(){
 		var xml;
-		var xmlHttp;
-		var cookies=document.cookie.split(";");
 		var number;
 		var i;
 		var temp;
@@ -151,154 +104,89 @@
 					for(i=0;i<events.length;i+=4){
 						addPanel(events[i],events[i+3],events[i+1]);
 						if(events[i+2]=="0"){
-							document.getElementById(events[i]+"Do").className="btn btn-success disabled";
+							document.getElementById(events[i]+"Do").className="btn btn-success ";
 							document.getElementById(events[i]+"Undo").className="btn btn-danger disabled pull-right";
+							document.getElementById(events[i]+"Do").disable=false;
+							document.getElementById(events[i]+"Undo").disable=true;
+							document.getElementById(events[i]+"Time").readOnly=false;
+						}
+						else{							
+							document.getElementById(events[i]+"Do").className="btn btn-success disabled";
+							document.getElementById(events[i]+"Undo").className="btn btn-danger pull-right";
+							document.getElementById(events[i]+"Do").disable=true;
+							document.getElementById(events[i]+"Undo").disable=false;
+							document.getElementById(events[i]+"Time").readOnly=true;
 						}
 					}
 				}
 			}
 		}
 		
-		xml.open("GET","/njuTJ/AmountServlet",false);
+		xml.open("GET","/njuTJ/AmountServlet",true);
 		xml.send();
-		
-		if(window.XMLHttpRequest){
-			xmlHttp=new XMLHttpRequest();
-		}
-		else{
-			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		
-		xmlHttp.onreadystatechange=function(){
-			if(xmlHttp.readyState==4&&xmlHttp.status==200){
-				if(xmlHttp.responseText!="none"&&xmlHttp.responseText!=""&&xmlHttp.responseText!="error"){
-					var events=xmlHttp.responseText.split("|");
-					for(i=0;i<events.length;i++){
-						document.getElementById(events[i]).className="panel panel-green";
-					}
-				}
-			}
-		}
-		
-		for(i=0;i<cookies.length;i++){
-			temp=cookies[i].split("=");
-			if(temp[0]=="njuTJ"){
-				if(temp[1]=="none"){
-					break;
-				}
-				else{
-					number=temp[1].split("_")[2];
-					xmlHttp.open("POST","/njuTJ/LoadServlet",true);
-					xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-					xmlHttp.send("number="+number);
-				}
-				break;
-			}
-		}
 	}
 	
-	function register(id){
+	function startRegister(event){
+		var xml;
 		var xmlHttp;
-		var cookies=document.cookie.split(";");
+		var number;
+		var temp;
+		var event;
+		
+		if(window.XMLHttpRequest){
+			xml=new XMLHttpRequest();
+		}
+		else{
+			xml=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xml.onreadystatechange=function(){
+			if(xml.readyState==4&&xml.status==200){
+				if(xml.responseText=="success"){
+					document.getElementById(event+"Do").className="btn btn-success disabled";
+					document.getElementById(event+"Undo").className="btn btn-danger pull-right";
+					document.getElementById(event+"Do").disable=true;
+					document.getElementById(event+"Undo").disable=false;
+					document.getElementById(event+"Time").readOnly=true;
+				}
+			}
+		}
+		
+		xml.open("POST","/njuTJ/StartRegisterServlet",true);
+		xml.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xml.send("recentTime="+document.getElementById(event+"Time").value+"&event="+event);
+	}
+	
+	function stopRegister(event){
+		var xml;
+		var xmlHttp;
 		var number;
 		var i;
 		var temp;
+		var event;
+		
 		if(window.XMLHttpRequest){
-			xmlHttp=new XMLHttpRequest();
+			xml=new XMLHttpRequest();
 		}
 		else{
-			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			xml=new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		
-		xmlHttp.onreadystatechange=function(){
-			if(xmlHttp.readyState==4&&xmlHttp.status==200){
-				if(xmlHttp.responseText=="success"){
-					document.getElementById(id).className="panel panel-green";
-					document.getElementById(id+"Number").innerHTML=parseInt(document.getElementById(id+"Number").innerHTML)+1;
-				}
-				else if(xmlHttp.responseText=="already"){
-					document.getElementById(id).className="panel panel-green";
-					alert("请勿重复报名");
-				}
-				else{
-					alert("报名失败，请稍后重试");
+		xml.onreadystatechange=function(){
+			if(xml.readyState==4&&xml.status==200){
+				if(xml.responseText=="success"){
+					document.getElementById(event+"Do").className="btn btn-success";
+					document.getElementById(event+"Undo").className="btn btn-danger disabled pull-right";
+					document.getElementById(event+"Do").disable=false;
+					document.getElementById(event+"Undo").disable=true;
+					document.getElementById(event+"Time").readOnly=false;
 				}
 			}
 		}
 		
-		for(i=0;i<cookies.length;i++){
-			temp=cookies[i].split("=");
-			if(temp[0]=="njuTJ"){
-				if(temp[1]=="none"){
-					alert("请先登录");
-				}
-				else{
-					number=temp[1].split("_")[2];
-					xmlHttp.open("POST","/njuTJ/RegisterServlet",true);
-					xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-					xmlHttp.send("event="+id+"&"+"number="+number);
-				}
-				break;
-			}
-		}
-		if(i==cookies.length){
-			alert("请先登录");
-		}
-	}
-	
-	function drop(id){
-		if(document.getElementById(id).className=="panel panel-green"){
-			var xmlHttp;
-			var cookies=document.cookie.split(";");
-			var number;
-			var i;
-			var temp;
-			if(window.XMLHttpRequest){
-				xmlHttp=new XMLHttpRequest();
-			}
-			else{
-				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			
-			xmlHttp.onreadystatechange=function(){
-				if(xmlHttp.readyState==4&&xmlHttp.status==200){
-					if(xmlHttp.responseText=="success"){
-						if(id[0]=="_"){
-							document.getElementById(id).className="panel panel-yellow";
-						}
-						else{
-							document.getElementById(id).className="panel panel-primary";
-						}
-						document.getElementById(id+"Number").innerHTML=document.getElementById(id+"Number").innerHTML-1;
-					}
-					else if(xmlHttp.responseText=="fail"){
-						alert("您未报名");
-					}
-					else{
-						alert("退选失败，请稍后重试");
-					}
-				}
-			}
-			
-			for(i=0;i<cookies.length;i++){
-				temp=cookies[i].split("=");
-				if(temp[0]=="njuTJ"){
-					if(temp[1]=="none"){
-						alert("请先登录");
-					}
-					else{
-						number=temp[1].split("_")[2];
-						xmlHttp.open("POST","/njuTJ/DropServlet",true);
-						xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-						xmlHttp.send("event="+id+"&"+"number="+number);
-					}
-					break;
-				}
-			}
-			if(i==cookies.length){
-				alert("请先登录");
-			}
-		}
+		xml.open("POST","/njuTJ/StopRegisterServlet",true);
+		xml.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xml.send("recentTime="+document.getElementById(event+"Time").value+"&event="+event);
 	}
 	
 	function addPanel(event,realName,num){
@@ -367,20 +255,36 @@
 		footer1_span2.appendChild(footer1_span2_i);
 		
 		//第三块div
+		var footerInput=document.createElement("div");
+		footerInput.className="panel-footer";
+		footerInput.style="text-align:center";
+		var smallp1=document.createElement("small");
+		smallp1.innerHTML="第";
+		var input=document.createElement("input");
+		input.id=event+"Time";
+		input.type="text";
+		input.style="width:10%";
+		var smallp2=document.createElement("small");
+		smallp2.innerHTML="次活动";
+		footerInput.appendChild(smallp1);
+		footerInput.appendChild(input);
+		footerInput.appendChild(smallp2);
+		
+		//第四块div
 		var footer2=document.createElement("div");
 		footer2.className="panel-footer";
 		var footer2_button1=document.createElement("button");
 		footer2_button1.id=event+"Do";
 		footer2_button1.type="button";
 		footer2_button1.className="btn btn-success";
-		footer2_button1.addEventListener("click",function(){register(event)},false);//报名
-		footer2_button1.innerHTML="报名";
+		footer2_button1.addEventListener("click",function(){startRegister(event)},false);//开启报名
+		footer2_button1.innerHTML="开启报名";
 		var footer2_button2=document.createElement("button");
 		footer2_button2.id=event+"Undo";
 		footer2_button2.type="button";
 		footer2_button2.className="btn btn-danger pull-right";
-		footer2_button2.addEventListener("click",function(){drop(event)},false);;//退选
-		footer2_button2.innerHTML="退选";
+		footer2_button2.addEventListener("click",function(){stopRegister(event)},false);//停止报名
+		footer2_button2.innerHTML="停止报名";
 		var footer2_div=document.createElement("div");
 		footer2_div.className="clearfix";
 		footer2.appendChild(footer2_button1);
@@ -391,6 +295,7 @@
 		whole.appendChild(panel);
 		panel.appendChild(heading);
 		panel.appendChild(more);
+		panel.appendChild(footerInput);
 		panel.appendChild(footer2);
 		
 		if(event[0]!="_"){
