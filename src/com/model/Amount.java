@@ -4,7 +4,6 @@ public class Amount {
 
 	private int id;
 	private String event;
-	private int amount;
 	private int canRegister;
 	private int recentTime;
 	private String realName;
@@ -23,14 +22,6 @@ public class Amount {
 	
 	public String getEvent(){
 		return event;
-	}
-	
-	public void setAmount(int amount){
-		this.amount=amount;
-	}
-	
-	public int getAmount(){
-		return amount;
 	}
 	
 	public void setCanRegister(int canRegister){

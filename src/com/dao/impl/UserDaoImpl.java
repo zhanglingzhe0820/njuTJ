@@ -60,8 +60,9 @@ public class UserDaoImpl implements UserDao {
 		List<Object> list;
 		StringBuilder result=new StringBuilder();
 		
-		String hql="from Amount";
+		String hql="from Amount amount where amount.event=?";
 		Query q=session.createQuery(hql);
+		q.setParameter(0, event);
 		list= q.list();
 		session.close();
 		int recentTime=((Amount) list.get(0)).getRecentTime();
@@ -93,8 +94,9 @@ public class UserDaoImpl implements UserDao {
 		List<Object> list;
 		StringBuilder result=new StringBuilder();
 		
-		String hql="from Amount";
+		String hql="from Amount amount where amount.event=?";
 		Query q=session.createQuery(hql);
+		q.setParameter(0, event);
 		list= q.list();
 		session.close();
 		int recentTime=((Amount) list.get(0)).getRecentTime();
@@ -253,17 +255,24 @@ public class UserDaoImpl implements UserDao {
 	private void eventP1(String event){
 		Session session=sessionFactory.openSession();
 		List<Object> list;
+		int recentTime;
 		
 		String hql="from Amount eva where eva.event=?";
 		Query q=session.createQuery(hql);
 		q.setParameter(0, event);
 		list= q.list();
-		int toUpdate=((Amount) list.get(0)).getAmount()+1;
+		recentTime=((Amount)list.get(0)).getRecentTime();
+		hql="from EventTime et where et.event=? and et.time=?";
+		q=session.createQuery(hql);
+		q.setParameter(0, event);
+		q.setParameter(1, recentTime);
+		list=q.list();
+		int toUpdate=((EventTime) list.get(0)).getNum()+1;
 		hql="update EventTime et set et.num=? where et.event=? and et.time=?";
 		q=session.createQuery(hql);
 		q.setParameter(0, toUpdate);
 		q.setParameter(1, event);
-		q.setParameter(2, ((Amount) list.get(0)).getRecentTime());
+		q.setParameter(2, recentTime);
 		q.executeUpdate();
 		session.close();
 	}
@@ -271,17 +280,24 @@ public class UserDaoImpl implements UserDao {
 	private void eventM1(String event){
 		Session session=sessionFactory.openSession();
 		List<Object> list;
+		int recentTime;
 		
 		String hql="from Amount eva where eva.event=?";
 		Query q=session.createQuery(hql);
 		q.setParameter(0, event);
 		list= q.list();
-		int toUpdate=((Amount) list.get(0)).getAmount()-1;
+		recentTime=((Amount)list.get(0)).getRecentTime();
+		hql="from EventTime et where et.event=? and et.time=?";
+		q=session.createQuery(hql);
+		q.setParameter(0, event);
+		q.setParameter(1, recentTime);
+		list=q.list();
+		int toUpdate=((EventTime) list.get(0)).getNum()-1;
 		hql="update EventTime et set et.num=? where et.event=? and et.time=?";
 		q=session.createQuery(hql);
 		q.setParameter(0, toUpdate);
 		q.setParameter(1, event);
-		q.setParameter(2, ((Amount) list.get(0)).getRecentTime());
+		q.setParameter(2, recentTime);
 		q.executeUpdate();
 		session.close();
 	}

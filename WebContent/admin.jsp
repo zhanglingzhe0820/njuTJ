@@ -73,7 +73,7 @@
 <div style="text-align:center">
 	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
 		<small>
-			Version 0.0.1<br>
+			Version 0.0.6<br>
 		</small>
 		<small>
 			@Powered by Surevil & NJU TJ
@@ -264,6 +264,7 @@
 		input.id=event+"Time";
 		input.type="text";
 		input.style="width:10%";
+		input.value=0;
 		var smallp2=document.createElement("small");
 		smallp2.innerHTML="次活动";
 		footerInput.appendChild(smallp1);
