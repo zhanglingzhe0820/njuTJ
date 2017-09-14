@@ -23,10 +23,11 @@
 	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<script src="resources/vendor/sb-admin-2/sb-admin-2.min.js"></script>
+	
 <title>南京大学天健社</title>
 </head>
 <body onload="load();">
-<div class="wrapper">
+<div>
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
 			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="adminArrange.jsp">南京大学天健社</a>
@@ -41,31 +42,37 @@
 			<a class="navbar-brand" href="index.jsp">管理员登出</a>
 		</div>
 	</nav>
-	<div>
+	
+	<div >
 		<div>
-			<h1>活动管理</h1>
-			<hr>
+			<div>
+				<h1>活动管理</h1>
+				<hr>
+			</div>
 		</div>
-	</div>
 	
-	<div>
-		<div style="text-align:center">
-           	<h2>志愿者活动</h2>
-        </div>
-        <hr>
-	</div>
+		<div>
+			<div style="text-align:center">
+           		<h2>志愿者活动</h2>
+        	</div>
+        	<hr>
+		</div>
 	
-	<div id="volunteer">
-    </div>
+		<div id="volunteer">
+    	</div>
     
-    <div>
-		<div style="text-align:center">
-           	<h2>內建活动</h2>
-        </div>
-        <hr>
-	</div>
+    	<div style="height:1000px">
+   	 	</div>
+    
+    	<div>
+			<div style="text-align:center">
+           		<h2>內建活动</h2>
+        	</div>
+        	<hr>
+		</div>
 	
-	<div id="inner">
+		<div id="inner">
+    	</div>
     </div>
 </div> 
 	
@@ -101,14 +108,14 @@
 				if(xml.responseText!="none"&&xml.responseText!=""&&xml.responseText!="error"){
 					temp=xml.responseText;
 					events=temp.split("|");
-					for(i=0;i<events.length;i+=4){
-						addPanel(events[i],events[i+3],events[i+1]);
+					for(i=0;i<events.length;i+=5){
+						addPanel(events[i],events[i+3],events[i+1],events[i+4]);
 						if(events[i+2]=="0"){
 							document.getElementById(events[i]+"Do").className="btn btn-success ";
 							document.getElementById(events[i]+"Undo").className="btn btn-danger disabled pull-right";
 							document.getElementById(events[i]+"Do").disable=false;
 							document.getElementById(events[i]+"Undo").disable=true;
-							document.getElementById(events[i]+"Time").readOnly=false;
+							document.getElementById(events[i]+"Time").type=false;
 						}
 						else{							
 							document.getElementById(events[i]+"Do").className="btn btn-success disabled";
@@ -118,6 +125,8 @@
 							document.getElementById(events[i]+"Time").readOnly=true;
 						}
 					}
+					addPlus("志愿者");
+					addPlus("內建");
 				}
 			}
 		}
@@ -189,7 +198,7 @@
 		xml.send("recentTime="+document.getElementById(event+"Time").value+"&event="+event);
 	}
 	
-	function addPanel(event,realName,num){
+	function addPanel(event,realName,num,time){
 		var whole=document.createElement("div");
 		whole.className="col-lg-3 col-md-6";
 		whole.style="z-index:1";
@@ -264,7 +273,7 @@
 		input.id=event+"Time";
 		input.type="text";
 		input.style="width:10%";
-		input.value=0;
+		input.value=time;
 		var smallp2=document.createElement("small");
 		smallp2.innerHTML="次活动";
 		footerInput.appendChild(smallp1);
@@ -300,6 +309,62 @@
 		panel.appendChild(footer2);
 		
 		if(event[0]!="_"){
+			document.getElementById("volunteer").appendChild(whole);
+		}
+		else{
+			document.getElementById("inner").appendChild(whole);
+		}
+	}
+	
+	function addPlus(kind){
+		var whole=document.createElement("div");
+		whole.className="col-lg-3 col-md-6";
+		whole.style="z-index:1";
+		
+		var panel=document.createElement("div");
+		panel.className="panel panel-default";
+		
+		var panel_heading=document.createElement("div");
+		panel_heading.className="panel-heading";
+		
+		var heading_a=document.createElement("a");
+		heading_a.href="";
+		
+		var heading_a_row=document.createElement("div");
+		heading_a_row.className="row";
+		
+		var heading_a_row_div=document.createElement("div");
+		heading_a_row_div.className="col-xs-9 text-center";
+		heading_a_row_div.style="width:100%;";
+		
+		var heading_a_row_div_i=document.createElement("i");
+		heading_a_row_div_i.className="glyphicon glyphicon-plus";
+		heading_a_row_div_i.style="font-size:10em;color:grey;";
+		
+		var panel_footer=document.createElement("div");
+		panel_footer.className="panel-footer";
+		panel_footer.style="text-align:center";
+		
+		var footer_alert=document.createElement("div");
+		footer_alert.className="alert alert-default";
+		
+		var footer_alert_big=document.createElement("big");
+		footer_alert_big.innerHTML="添加"+kind+"活动";
+		footer_alert_big.style="font-weight:900";
+		
+		whole.appendChild(panel);
+		panel.appendChild(panel_heading);
+		panel.appendChild(panel_footer);
+		
+		panel_heading.appendChild(heading_a);
+		heading_a.appendChild(heading_a_row);
+		heading_a_row.appendChild(heading_a_row_div);
+		heading_a_row_div.appendChild(heading_a_row_div_i);
+		
+		panel_footer.appendChild(footer_alert);
+		footer_alert.appendChild(footer_alert_big);
+		
+		if(kind=="志愿者"){
 			document.getElementById("volunteer").appendChild(whole);
 		}
 		else{

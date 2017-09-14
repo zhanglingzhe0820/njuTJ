@@ -103,6 +103,9 @@
 	<div id="volunteer">
     </div>
     
+    <div style="height:800px">
+   	</div>
+    
     <div>
 		<div style="text-align:center">
            	<h2>內建活动</h2>
@@ -148,7 +151,7 @@
 				if(xml.responseText!="none"&&xml.responseText!=""&&xml.responseText!="error"){
 					temp=xml.responseText;
 					events=temp.split("|");
-					for(i=0;i<events.length;i+=4){
+					for(i=0;i<events.length;i+=5){
 						addPanel(events[i],events[i+3],events[i+1]);
 						if(events[i+2]=="0"){
 							document.getElementById(events[i]+"Do").className="btn btn-success disabled";

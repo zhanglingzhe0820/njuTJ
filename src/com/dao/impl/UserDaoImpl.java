@@ -189,6 +189,9 @@ public class UserDaoImpl implements UserDao {
 				
 				result.append(((Amount)eva).getRealName());
 				result.append("|");
+				
+				result.append(((Amount)eva).getRecentTime());
+				result.append("|");
 			}
 			return new String(result.substring(0,result.length()-1).toCharArray());
 		}
