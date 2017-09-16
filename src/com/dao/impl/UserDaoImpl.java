@@ -181,7 +181,12 @@ public class UserDaoImpl implements UserDao {
 				q.setParameter(1, ((Amount)eva).getRecentTime());
 				listTime=q.list();
 				session.close();
-				result.append(((EventTime)(listTime.get(0))).getNum());
+				if(listTime==null||listTime.isEmpty()){
+					result.append(0);
+				}
+				else{
+					result.append(((EventTime)(listTime.get(0))).getNum());
+				}
 				result.append("|");
 				
 				result.append(((Amount)eva).getCanRegister());
@@ -312,20 +317,18 @@ public class UserDaoImpl implements UserDao {
 		String hql="";
 		Query q;
 		
-		try{
-			hql="from EventTime et where et.event=? and et.time=?";
-			q=session.createQuery(hql);
-			q.setParameter(0, event);
-			q.setParameter(1, Integer.parseInt(recentTime));
-			q.list();
-		}catch(Exception e){
-			e.printStackTrace();
+		hql="from EventTime et where et.event=? and et.time=?";
+		q=session.createQuery(hql);
+		q.setParameter(0, event);
+		q.setParameter(1, Integer.parseInt(recentTime));
+		List<Object> tempList=q.list();
+		
+		if(tempList==null|tempList.isEmpty()){
 			EventTime et=new EventTime();
 			et.setEvent(event);
 			et.setTime(Integer.parseInt(recentTime));
 			et.setNum(0);
 			session.save(et);
-		}finally{
 			session.close();
 		}
 		
