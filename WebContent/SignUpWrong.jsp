@@ -105,7 +105,7 @@
 <div style="text-align:center">
 	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
 		<small>
-			Version 0.0.6<br>
+			Version 0.1.0<br>
 		</small>
 		<small>
 			@Powered by Surevil & NJU TJ
