@@ -247,6 +247,9 @@ public class UserDaoImpl implements UserDao {
 				result.append(((User)listUser.get(0)).getDepartment());
 				result.append("|");
 				
+				result.append(((Event)ev).getTimeLength());
+				result.append("|");
+				
 				session=sessionFactory.openSession();
 				hql="from Amount am where am.event=?";
 				q=session.createQuery(hql);
@@ -355,6 +358,40 @@ public class UserDaoImpl implements UserDao {
 		q.executeUpdate();
 		session.close();
 		return true;
+	}
+
+	@Override
+	public String submitLength(String lengthMessages) {
+		Session session=sessionFactory.openSession();
+		String hql="update Event ev set ev.timeLength=? where ev.event=? and ev.time=? and ev.number=?";
+		Query q=session.createQuery(hql);
+		String[] messages=lengthMessages.split("\\|");
+		try{
+			for(int i=0;i<messages.length;i+=4){
+				q.setParameter(0, Float.parseFloat(messages[i+3]));
+				q.setParameter(1, messages[i]);
+				q.setParameter(2, Integer.parseInt(messages[i+1]));
+				q.setParameter(3, messages[i+2]);
+				q.executeUpdate();
+			}
+			return "success";
+		}catch(Exception e){
+			e.printStackTrace();
+			return "fail";
+		}finally{
+			session.close();
+		}
+	}
+
+	@Override
+	public void addEvent(String realName, String event, String recentTime) {
+		Session session=sessionFactory.openSession();
+		Amount amount=new Amount();
+		amount.setCanRegister(0);
+		amount.setEvent(event);
+		amount.setRealName(realName);
+		amount.setRecentTime(Integer.parseInt(recentTime));
+		session.save(amount);
 	}
 
 }

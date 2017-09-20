@@ -30,7 +30,7 @@
 	<div class="wrapper" id="wrapper">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
-			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="index.jsp">南京大学天健社</a>
+			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="">南京大学天健社</a>
 		</div>
 		<div>
 			<a class="navbar-brand" href="index.jsp">报名活动</a>
@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="姓名" name="name" type="text" value="">
                                 </div>
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value="登录">
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="注册">
                             </form>
                         </div>
                         <div class="panel-footer">

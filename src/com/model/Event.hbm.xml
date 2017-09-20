@@ -16,5 +16,8 @@
 		<property name="time" type="int" not-null="true">
 			<column name="time"/>
 		</property>
+		<property name="timeLength" type="float" not-null="true">
+			<column name="timeLength"/>
+		</property>
 	</class>
 </hibernate-mapping>

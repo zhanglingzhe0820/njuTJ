@@ -108,4 +108,27 @@ public class UserServiceImpl implements UserService {
 			return "error";
 		}
 	}
+
+	@Override
+	public String submitLength(String lengthMessages) {
+		try{
+			return userDao.submitLength(lengthMessages);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return "error";
+		}
+	}
+
+	@Override
+	public boolean addEvent(String realName, String event, String recentTime) {
+		try{
+			userDao.addEvent(realName,event,recentTime);
+			return true;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

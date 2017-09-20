@@ -6,6 +6,7 @@ public class Event {
 	private String event;
 	private String number;
 	private int time;
+	private float timeLength;
 	
 	public void setId(int id){
 		this.id=id;
@@ -38,5 +39,12 @@ public class Event {
 	public int getTime(){
 		return time;
 	}
-
+	
+	public void setTimeLength(float timeLength){
+		this.timeLength=timeLength;
+	}
+	
+	public float getTimeLength(){
+		return timeLength;
+	}
 }

@@ -13,4 +13,6 @@ public interface UserDao {
 	public boolean stopRegister(String recentTime,String event);
 	public boolean startRegister(String recentTime, String event);
 	public String loadArrange();
+	public String submitLength(String lengthMessages);
+	public void addEvent(String realName, String event, String recentTime);
 }

@@ -23,40 +23,24 @@
 	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<script src="resources/vendor/sb-admin-2/sb-admin-2.min.js"></script>
-
+	
 <title>南京大学天健社</title>
 </head>
 <body>
-	<div class="wrapper" id="wrapper">
+<div>
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
 			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="">南京大学天健社</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="index.jsp">报名活动</a>
+			<a class="navbar-brand" href="adminArrange.jsp">活动统计</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="index.jsp">招新报名</a>
+			<a class="navbar-brand" href="admin.jsp">活动管理</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="adminLogin.jsp">管理员登录</a>
+			<a class="navbar-brand" href="index.jsp">管理员登出</a>
 		</div>
-		<ul class="nav navbar-top-links navbar-right">
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-					<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-				</a>
-				<ul class="dropdown-menu dropdown-users">
-					<li><a href="login.jsp"><i class="fa fa-sign-in fa-fw"></i> 登录</a>
-					</li>
-					<li><a href="SignUp.jsp"><i class="fa fa-list-alt fa-fw"></i> 注册</a>
-					</li>
-					<li><a href="logout.action"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
-					</li>
-				</ul>
-				<!-- /.dropdown-user -->
-			</li>
-		</ul>
 	</nav>
 	
 	<div style="height:100px"></div>
@@ -66,26 +50,20 @@
 			<div class="fullwidthbanner">
 				<div class="panel panel-info">
                         <div class="panel-heading">
-                            <h4 style="text-align:center">注册</h4>
+                            <h4 style="text-align:center">添加志愿者活动</h4>
                         </div>
                         <div class="panel-body">
-                            <form action="signUp.action" role="form">
+                            <form action="addVolunteerEvent.action" role="form">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="QQ号" name="qq" type="text" autofocus="">
+                                    <input class="form-control" placeholder="活动名称" name="realName" type="text" autofocus="">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="手机号" name="phone" type="text" value="">
+                                    <input class="form-control" placeholder="英文名称（小于50个字符）" name="event" type="text" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="学号" name="number" type="text" value="">
+                                    <input class="form-control" placeholder="现进行次数" name="recentTime" type="text" value="1">
                                 </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="院系" name="department" type="text" value="">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="姓名" name="name" type="text" value="">
-                                </div>
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value="注册">
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="确定添加">
                             </form>
                         </div>
                         <div class="panel-footer">
@@ -95,19 +73,6 @@
 			</div>
 		</div>
 	</div>
-</div> 
-
-
-	
-<div style="text-align:center">
-	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
-		<small>
-			Version 0.0.6<br>
-		</small>
-		<small>
-			@Powered by Surevil & NJU TJ
-		</small>
-	</p>
 </div>
 </body>
 </html>

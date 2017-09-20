@@ -87,6 +87,14 @@
     <servlet-name>ArrangeServlet</servlet-name>
     <url-pattern>/ArrangeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>SubmitLengthServlet</servlet-name>
+    <servlet-class>com.servlet.SubmitLengthServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SubmitLengthServlet</servlet-name>
+    <url-pattern>/SubmitLengthServlet</url-pattern>
+  </servlet-mapping>
 
   
   <filter>

@@ -30,7 +30,7 @@
 <div>
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
-			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="adminArrange.jsp">南京大学天健社</a>
+			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="">南京大学天健社</a>
 		</div>
 		<div>
 			<a class="navbar-brand" href="adminArrange.jsp">活动统计</a>
@@ -328,7 +328,12 @@
 		panel_heading.className="panel-heading";
 		
 		var heading_a=document.createElement("a");
-		heading_a.href="";
+		if(kind=="志愿者"){
+			heading_a.href="addVolunteerEvent.jsp";
+		}
+		else{
+			heading_a.href="addInnerEvent.jsp";
+		}
 		
 		var heading_a_row=document.createElement("div");
 		heading_a_row.className="row";
@@ -371,5 +376,6 @@
 			document.getElementById("inner").appendChild(whole);
 		}
 	}
+	
 </script>
 </html>

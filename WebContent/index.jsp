@@ -43,7 +43,7 @@
 <div class="wrapper">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
-			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="index.jsp">南京大学天健社</a>
+			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="">南京大学天健社</a>
 		</div>
 		<div>
 			<a class="navbar-brand" href="index.jsp">报名活动</a>

@@ -13,4 +13,6 @@ public interface UserService {
 	public String loadArrange();
 	public boolean startRegister(String recentTime,String event);
 	public boolean stopRegister(String recentTime,String event);
+	public String submitLength(String lengthMessages);
+	public boolean addEvent(String realName,String event,String recentTime);
 }
