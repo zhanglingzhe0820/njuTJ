@@ -50,6 +50,37 @@
 	
 	<div>
 		<div style="text-align:center">
+           	<h3>时长搜索</h3>
+        </div>
+        <div>
+        	<input id="searchText" class="form-control" placeholder="学号或姓名" name="username" type="text" value="" oninput="search();"/>
+        </div>
+        <hr>
+	</div>
+	
+	<div id="search">
+		<div class="panel panel-info">
+			<div class="panel-heading">搜索结果</div>
+			<div class="panel-body">
+				<table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="searchTable" style="width: 100%;">
+					<thead>
+						<tr>
+							<th style="width: 18%;">姓名</th>
+							<th style="width: 18%;">学号</th>
+							<th style="width: 54%;">活动</th>
+							<th style="width: 10%;">时长</th>
+						</tr>
+					</thead>
+					<tbody id="searchResult">
+					</tbody>
+				</table>
+			</div>
+			<div class="panel-footer" style="text-align: right;" id="totalLength">总时长：0.0</div>
+		</div>
+	</div>
+	
+	<div>
+		<div style="text-align:center">
            	<h2>志愿者活动</h2>
         </div>
         <hr>
@@ -74,7 +105,7 @@
 <div style="text-align:center">
 	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
 		<small>
-			Version 0.1.0<br>
+			Version 0.1.1<br>
 		</small>
 		<small>
 			@Powered by Surevil & NJU TJ
@@ -83,6 +114,73 @@
 </div>
 </body>
 <script>
+	function search(){
+		var i=0;
+		clearChild();
+		var condition=document.getElementById("searchText").value;
+		var allTbodyTags=document.getElementsByTagName("tbody");
+		for(i=0;i<allTbodyTags.length;i++){
+			if(allTbodyTags[i].id!="searchResult"){
+				var trs=allTbodyTags[i].getElementsByTagName("tr");
+				for(var j=0;j<trs.length;j++){
+					var cells=trs[j].cells;
+					for(var k=0;k<cells.length;k++){
+						if(cells[k].innerHTML.indexOf(condition)==-1?false:true){
+							var name=cells[0].innerHTML;
+							var number=cells[1].innerHTML;
+							var event=allTbodyTags[i].parentNode.parentNode.parentNode.getElementsByClassName("panel-heading")[0].innerHTML;
+							var timeLength=cells[5].innerHTML;
+							addSearchResult(name,number,event,timeLength);
+							break;
+						}
+					}
+				}
+			}
+		}
+		if(condition==""){
+			clearChild();
+		}
+		setTotalLength();
+	}
+	
+	function clearChild(){
+		var toRemove=document.getElementById("searchResult");
+		toRemove.parentNode.removeChild(toRemove);
+		var tbody=document.createElement("tbody");
+		tbody.id="searchResult";
+		document.getElementById("searchTable").appendChild(tbody);
+	}
+	
+	function setTotalLength(){
+		var searchBody=document.getElementById("searchResult");
+		var count=0.0;
+		var trs=searchBody.getElementsByTagName("tr");
+		if(trs!=null&&trs.length!=0){
+			for(var j=0;j<trs.length;j++){
+				count+=parseFloat(trs[j].cells[3].innerHTML);
+			}
+		}
+		document.getElementById("totalLength").innerHTML="总时长:"+count;
+	}
+	
+	function addSearchResult(name,number,event,timeLength){
+		var table_tbody_tr=document.createElement("tr");
+		var table_tbody_tr_td1=document.createElement("td");
+		table_tbody_tr_td1.innerHTML=name;
+		var table_tbody_tr_td2=document.createElement("td");
+		table_tbody_tr_td2.innerHTML=number;
+		var table_tbody_tr_td3=document.createElement("td");
+		table_tbody_tr_td3.innerHTML=event;
+		var table_tbody_tr_td4=document.createElement("td");
+		table_tbody_tr_td4.innerHTML=timeLength;
+		var table_tbody=document.getElementById("searchResult");
+		table_tbody.appendChild(table_tbody_tr);
+		table_tbody_tr.appendChild(table_tbody_tr_td1);
+		table_tbody_tr.appendChild(table_tbody_tr_td2);
+		table_tbody_tr.appendChild(table_tbody_tr_td3);
+		table_tbody_tr.appendChild(table_tbody_tr_td4);
+	}
+	
 	function loadArrange(){
 		var xml;
 		var number;
@@ -173,7 +271,7 @@
 		var table=document.createElement("table");
 		table.className="table table-striped table-bordered table-hover dataTable no-footer dtr-inline";
 		table.style="width:100%";
-		panel_body.append(table);
+		panel_body.appendChild(table);
 		
 		//table第一段
 		var table_thead=document.createElement("thead");

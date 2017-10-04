@@ -24,11 +24,11 @@
 			<result name="error">adminLoginWrong.jsp</result>
 		</action>
 		<action name="addVolunteerEvent" class="com.action.AddVolunteerEventAction">
-			<result name="success">admin.jsp</result>
+			<result name="success">addVolunteerEventSuccess.jsp</result>
 			<result name="error">addVolunteerEventWrong.jsp</result>
 		</action>
 		<action name="addInnerEvent" class="com.action.AddInnerEventAction">
-			<result name="success">admin.jsp</result>
+			<result name="success">addVolunteerEventSuccess.jsp</result>
 			<result name="error">addInnerEventWrong.jsp</result>
 		</action>
 	</package>

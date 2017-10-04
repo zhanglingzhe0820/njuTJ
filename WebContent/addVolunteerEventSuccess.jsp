@@ -50,13 +50,13 @@
 			<div class="fullwidthbanner">
 				<div class="panel panel-info">
                         <div class="panel-heading">
-                            <h4 style="text-align:center">添加內建活动</h4>
+                            <h4 style="text-align:center">添加志愿者活动</h4>
                         </div>
                         <div class="panel-body">
-                        <div class="alert alert-danger">
-                              添加失败，请检查输入是否正确并稍后再试
+                        <div class="alert alert-success">
+                              添加成功
                             </div>
-                            <form action="addInnerEvent.action" role="form">
+                            <form action="addVolunteerEvent.action" role="form">
                                 <div class="form-group">
                                     <input class="form-control" placeholder="活动名称" name="realName" type="text" autofocus="">
                                 </div>
