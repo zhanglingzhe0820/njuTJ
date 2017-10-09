@@ -23,6 +23,9 @@
 			<result name="input">adminLoginEmpty.jsp</result>
 			<result name="error">adminLoginWrong.jsp</result>
 		</action>
+		<action name="adminLogout" class="com.action.AdminLogoutAction">
+			<result name="success">index.jsp</result>
+		</action>
 		<action name="addVolunteerEvent" class="com.action.AddVolunteerEventAction">
 			<result name="success">addVolunteerEventSuccess.jsp</result>
 			<result name="error">addVolunteerEventWrong.jsp</result>

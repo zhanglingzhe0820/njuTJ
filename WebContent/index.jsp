@@ -49,6 +49,9 @@
 			<a class="navbar-brand" href="index.jsp">报名活动</a>
 		</div>
 		<div>
+			<a class="navbar-brand" href="arrange.jsp">活动统计</a>
+		</div>
+		<div>
 			<a class="navbar-brand" href="index.jsp">招新报名</a>
 		</div>
 		<div>
@@ -75,10 +78,10 @@
 		<div class="fullwidthbanner">
 			<div id="board">
 				<h3 style="text-align:center">公告栏</h3>
-				<p style="text-align:center">招新<br>
+				<p style="text-align:center">天健社<br>
 				<p style="text-align:center">部门设置：活动部 全媒体 人资部 公关部 项目部</p><br>
-				<p style="text-align:center">13号宣讲</p><br>
-				<p style="text-align:center">16、17面试</p><br>
+				<p style="text-align:center">17志愿者群号：</p><br>
+				<p style="text-align:center">658573828</p><br>
 				<p style="text-align:center">17年公益路漫漫</p><br>
 				<p style="text-align:center"></p><br>
 				<p style="text-align:center">服务社会，奉献爱心</p><br>

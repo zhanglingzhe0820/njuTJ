@@ -36,6 +36,9 @@
 			<a class="navbar-brand" href="index.jsp">报名活动</a>
 		</div>
 		<div>
+			<a class="navbar-brand" href="arrange.jsp">活动统计</a>
+		</div>
+		<div>
 			<a class="navbar-brand" href="index.jsp">招新报名</a>
 		</div>
 		<div>

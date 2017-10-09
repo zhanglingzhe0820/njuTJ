@@ -26,7 +26,7 @@
 	
 <title>南京大学天健社</title>
 </head>
-<body>
+<body onload="load();">
 <div>
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
@@ -39,7 +39,7 @@
 			<a class="navbar-brand" href="admin.jsp">活动管理</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="index.jsp">管理员登出</a>
+			<a class="navbar-brand" href="adminLogout.action">管理员登出</a>
 		</div>
 	</nav>
 	
@@ -85,4 +85,22 @@
 	</p>
 </div>
 </body>
+<script>
+function load(){
+	//验证登录
+	var cookies=document.cookie.split(";");
+	for(i=0;i<cookies.length;i++){
+		temp=cookies[i].split("=");
+		if(temp[0]=="njuTJAdmin"){
+			if(temp[1]=="none"){
+				window.location.href="/njuTJ/index.jsp";
+			}
+			break;
+		}
+	}
+	if(i==cookies.length){
+		window.location.href="/njuTJ/index.jsp";
+	}
+}
+</script>
 </html>

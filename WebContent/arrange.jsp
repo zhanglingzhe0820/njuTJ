@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -32,14 +31,33 @@
 			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="">南京大学天健社</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="adminArrange.jsp">活动统计</a>
+			<a class="navbar-brand" href="index.jsp">报名活动</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="admin.jsp">管理活动</a>
+			<a class="navbar-brand" href="arrange.jsp">活动统计</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="adminLogout.action">管理员登出</a>
+			<a class="navbar-brand" href="index.jsp">招新报名</a>
 		</div>
+		<div>
+			<a class="navbar-brand" href="adminLogin.jsp">管理员登录</a>
+		</div>
+		<ul class="nav navbar-top-links navbar-right">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+				</a>
+				<ul class="dropdown-menu dropdown-users">
+					<li><a href="login.jsp"><i class="fa fa-sign-in fa-fw"></i> 登录</a>
+					</li>
+					<li><a href="SignUp.jsp"><i class="fa fa-list-alt fa-fw"></i> 注册</a>
+					</li>
+					<li><a href="logout.action"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+					</li>
+				</ul>
+				<!-- /.dropdown-user -->
+			</li>
+		</ul>
 	</nav>
 	<div>
 		<div>
@@ -215,20 +233,6 @@
 		xml.open("GET","/njuTJ/ArrangeServlet",true);
 		xml.send();
 		
-		//验证登录
-		var cookies=document.cookie.split(";");
-		for(i=0;i<cookies.length;i++){
-			temp=cookies[i].split("=");
-			if(temp[0]=="njuTJAdmin"){
-				if(temp[1]=="none"){
-					window.location.href="/njuTJ/index.jsp";
-				}
-				break;
-			}
-		}
-		if(i==cookies.length){
-			window.location.href="/njuTJ/index.jsp";
-		}
 	}
 	
 	function addTable(event,time,name,number,qq,phone,department,timeLength){
@@ -260,9 +264,6 @@
 		panel.className="panel panel-info";
 		var panel_body=document.createElement("div");
 		panel_body.className="panel-body";
-		var panel_footer_button=document.createElement("div");
-		panel_footer_button.className="panel-footer";
-		panel_footer_button.style="text-align:right";
 		var panel_heading=document.createElement("div");
 		panel_heading.className="panel-heading";
 		panel_heading.innerHTML=realName+":第 "+time+" 次";
@@ -273,7 +274,6 @@
 		
 		panel.appendChild(panel_heading);
 		panel.appendChild(panel_body);
-		panel.appendChild(panel_footer_button);
 		panel.appendChild(panel_footer);
 		
 		if(event[0]!="_"){
@@ -343,71 +343,6 @@
 		table_tbody_tr.appendChild(table_tbody_tr_td5);
 		table_tbody_tr.appendChild(table_tbody_tr_td6);
 		
-		//table按钮
-		var button_modifyLength=document.createElement("button");
-		button_modifyLength.id=event+time+"modifyButton";
-		button_modifyLength.type="button";
-		button_modifyLength.className="btn btn-info";
-		button_modifyLength.innerHTML="修改时长";
-		button_modifyLength.setAttribute("onclick","modify('"+event+time+"','"+event+"|"+time+"')");//修改时长
-		panel_footer_button.appendChild(button_modifyLength);
-	}
-	
-	function modify(tableName,splitTableName){
-		document.getElementById(tableName+"modifyButton").innerHTML="确定提交";
-		document.getElementById(tableName+"modifyButton").setAttribute("onclick","submitLength('"+tableName+"','"+splitTableName+"')");//提交时长
-		var trs=document.getElementById(tableName);
-		for(var i=0;i<trs.rows.length;i++){
-			var textBox=document.createElement("input");
-			textBox.id=tableName+"rows"+i;
-			textBox.type="text";
-			textBox.value=trs.rows[i].cells[5].innerHTML;
-			textBox.style="width:100%";
-			trs.rows[i].cells[5].innerHTML="";
-			trs.rows[i].cells[5].appendChild(textBox);
-		}
-	}
-		
-	function submitLength(tableName,splitTableName){
-		var xmlHttp;
-		var cookies=document.cookie.split(";");
-		var number;
-		var i;
-		var message="";
-		var trs=document.getElementById(tableName);
-		if(window.XMLHttpRequest){
-			xmlHttp=new XMLHttpRequest();
-		}
-		else{
-			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		
-		xmlHttp.onreadystatechange=function(){
-			if(xmlHttp.readyState==4&&xmlHttp.status==200){
-				if(xmlHttp.responseText=="success"){
-					document.getElementById(tableName+"modifyButton").innerHTML="修改时长";
-					for(i=0;i<trs.rows.length;i++){
-						var toRemove=document.getElementById(tableName+"rows"+i);
-						trs.rows[i].cells[5].innerHTML=toRemove.value;
-					}
-					document.getElementById(tableName+"modifyButton").setAttribute("onclick","modify('"+tableName+"','"+splitTableName+"')");//修改时长
-				}
-				else if(xmlHttp.responseText=="fail"){
-					alert("提交失败，请检查数据类型");
-				}
-				else{
-					alert("提交失败，请稍后重试");
-				}
-			}
-		}
-		
-		for(i=0;i<trs.rows.length;i++){
-			message+=splitTableName+"|"+trs.rows[i].cells[1].innerHTML+"|"+document.getElementById(tableName+"rows"+i).value+"|";
-		}
-		
-		xmlHttp.open("POST","/njuTJ/SubmitLengthServlet",true);
-		xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-		xmlHttp.send("timeLength="+message.substring(0,message.length-1));
 	}
 </script>
 </html>

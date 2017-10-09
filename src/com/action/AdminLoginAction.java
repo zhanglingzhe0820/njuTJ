@@ -1,14 +1,9 @@
 package com.action;
 
-import java.net.URLEncoder;
-
 import javax.servlet.http.Cookie;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.model.User;
-import com.service.UserService;
-import com.service.impl.UserServiceImpl;
 
 public class AdminLoginAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
@@ -21,6 +16,9 @@ public class AdminLoginAction extends BaseAction {
 	
 	public String execute(){
 		if(DigestMD5.getMD5Result(username).equals(USERNAME)&&DigestMD5.getMD5Result(password).equals(PASSWORD)){
+			Cookie cookie=new Cookie("njuTJAdmin","login");
+			cookie.setMaxAge(60*60*24);
+			ServletActionContext.getResponse().addCookie(cookie);
 			return SUCCESS;
 		}
 		return ERROR;

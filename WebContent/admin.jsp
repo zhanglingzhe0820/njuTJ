@@ -39,7 +39,7 @@
 			<a class="navbar-brand" href="admin.jsp">活动管理</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="index.jsp">管理员登出</a>
+			<a class="navbar-brand" href="adminLogout.action">管理员登出</a>
 		</div>
 	</nav>
 	
@@ -133,6 +133,21 @@
 		
 		xml.open("GET","/njuTJ/AmountServlet",true);
 		xml.send();
+		
+		//验证登录
+		var cookies=document.cookie.split(";");
+		for(i=0;i<cookies.length;i++){
+			temp=cookies[i].split("=");
+			if(temp[0]=="njuTJAdmin"){
+				if(temp[1]=="none"){
+					window.location.href="/njuTJ/index.jsp";
+				}
+				break;
+			}
+		}
+		if(i==cookies.length){
+			window.location.href="/njuTJ/index.jsp";
+		}
 	}
 	
 	function startRegister(event){

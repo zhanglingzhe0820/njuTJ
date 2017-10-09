@@ -26,7 +26,7 @@
 <title>南京大学天健社</title>
 
 </head>
-<body >
+<body onload="load();">
 <div class="wrapper">
 	<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 		<div class="navbar-header">
@@ -103,4 +103,17 @@
 </div>
 
 </body>
+<script>
+function load(){
+	//验证登录
+	var cookies=document.cookie.split(";");
+	for(i=0;i<cookies.length;i++){
+		temp=cookies[i].split("=");
+		if(temp[0]=="njuTJAdmin"&&temp[1]=="login"){
+			window.location.href="/njuTJ/adminArrange.jsp";
+			break;
+		}
+	}
+}
+</script>
 </html>
