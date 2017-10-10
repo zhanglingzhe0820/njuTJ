@@ -206,56 +206,62 @@
 		}
 	}
 	
-	function register(id){
+	function register(id,className){
 		var xmlHttp;
 		var cookies=document.cookie.split(";");
 		var number;
 		var i;
 		var temp;
-		if(window.XMLHttpRequest){
-			xmlHttp=new XMLHttpRequest();
+		
+		if(className.indexOf("disable")==-1){
+			if(window.XMLHttpRequest){
+				xmlHttp=new XMLHttpRequest();
+			}
+			else{
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		
+			xmlHttp.onreadystatechange=function(){
+				if(xmlHttp.readyState==4&&xmlHttp.status==200){
+					if(xmlHttp.responseText=="success"){
+						document.getElementById(id).className="panel panel-green";
+						document.getElementById(id+"Number").innerHTML=parseInt(document.getElementById(id+"Number").innerHTML)+1;
+					}
+					else if(xmlHttp.responseText=="already"){
+						document.getElementById(id).className="panel panel-green";
+						alert("请勿重复报名");
+					}
+					else{
+						alert("报名失败，请稍后重试");
+					}
+				}
+			}
+		
+			for(i=0;i<cookies.length;i++){
+				temp=cookies[i].split("=");
+				if(temp[0]=="njuTJ"){
+					if(temp[1]=="none"){
+						alert("请先登录");
+					}
+					else{
+						number=temp[1].split("_")[2];
+						xmlHttp.open("POST","/njuTJ/RegisterServlet",true);
+						xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+						xmlHttp.send("event="+id+"&"+"number="+number);
+					}
+					break;
+				}
+			}
+			if(i==cookies.length){
+				alert("请先登录");
+			}
 		}
 		else{
-			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		
-		xmlHttp.onreadystatechange=function(){
-			if(xmlHttp.readyState==4&&xmlHttp.status==200){
-				if(xmlHttp.responseText=="success"){
-					document.getElementById(id).className="panel panel-green";
-					document.getElementById(id+"Number").innerHTML=parseInt(document.getElementById(id+"Number").innerHTML)+1;
-				}
-				else if(xmlHttp.responseText=="already"){
-					document.getElementById(id).className="panel panel-green";
-					alert("请勿重复报名");
-				}
-				else{
-					alert("报名失败，请稍后重试");
-				}
-			}
-		}
-		
-		for(i=0;i<cookies.length;i++){
-			temp=cookies[i].split("=");
-			if(temp[0]=="njuTJ"){
-				if(temp[1]=="none"){
-					alert("请先登录");
-				}
-				else{
-					number=temp[1].split("_")[2];
-					xmlHttp.open("POST","/njuTJ/RegisterServlet",true);
-					xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-					xmlHttp.send("event="+id+"&"+"number="+number);
-				}
-				break;
-			}
-		}
-		if(i==cookies.length){
-			alert("请先登录");
+			rejectRegister();
 		}
 	}
 	
-	function drop(id){
+	function drop(id,className){
 		if(document.getElementById(id).className=="panel panel-green"){
 			var xmlHttp;
 			var cookies=document.cookie.split(";");
@@ -307,6 +313,12 @@
 			if(i==cookies.length){
 				alert("请先登录");
 			}
+		}
+		else if(className.indexOf("disable")!=-1){
+			rejectRegister();
+		}
+		else{
+			alert("您未报名");
 		}
 	}
 	
@@ -382,13 +394,13 @@
 		footer2_button1.id=event+"Do";
 		footer2_button1.type="button";
 		footer2_button1.className="btn btn-success";
-		footer2_button1.addEventListener("click",function(){register(event)},false);//报名
+		footer2_button1.addEventListener("click",function(){register(event,footer2_button1.className)},false);//报名
 		footer2_button1.innerHTML="报名";
 		var footer2_button2=document.createElement("button");
 		footer2_button2.id=event+"Undo";
 		footer2_button2.type="button";
 		footer2_button2.className="btn btn-danger pull-right";
-		footer2_button2.addEventListener("click",function(){drop(event)},false);;//退选
+		footer2_button2.addEventListener("click",function(){drop(event,footer2_button2.className)},false);;//退选
 		footer2_button2.innerHTML="退选";
 		var footer2_div=document.createElement("div");
 		footer2_div.className="clearfix";
@@ -408,6 +420,10 @@
 		else{
 			document.getElementById("inner").appendChild(whole);
 		}
+	}
+	
+	function rejectRegister(){
+		alert("活动尚未开启报名哟~");
 	}
 </script>
 </html>
