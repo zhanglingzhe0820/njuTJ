@@ -147,7 +147,7 @@
 							var name=cells[0].innerHTML;
 							var number=cells[1].innerHTML;
 							var event=allTbodyTags[i].parentNode.parentNode.parentNode.getElementsByClassName("panel-heading")[0].innerHTML;
-							var timeLength=cells[5].innerHTML;
+							var timeLength=cells[2].innerHTML;
 							addSearchResult(name,number,event,timeLength);
 							break;
 						}
@@ -242,21 +242,12 @@
 		var table_tbody_tr_td2=document.createElement("td");
 		table_tbody_tr_td2.innerHTML=number;
 		var table_tbody_tr_td3=document.createElement("td");
-		table_tbody_tr_td3.innerHTML=qq;
-		var table_tbody_tr_td4=document.createElement("td");
-		table_tbody_tr_td4.innerHTML=phone;
-		var table_tbody_tr_td5=document.createElement("td");
-		table_tbody_tr_td5.innerHTML=department;
-		var table_tbody_tr_td6=document.createElement("td");
-		table_tbody_tr_td6.innerHTML=timeLength;
+		table_tbody_tr_td3.innerHTML=timeLength;
 		var table_tbody=document.getElementById(event+time);
 		table_tbody.appendChild(table_tbody_tr);
 		table_tbody_tr.appendChild(table_tbody_tr_td1);
 		table_tbody_tr.appendChild(table_tbody_tr_td2);
 		table_tbody_tr.appendChild(table_tbody_tr_td3);
-		table_tbody_tr.appendChild(table_tbody_tr_td4);
-		table_tbody_tr.appendChild(table_tbody_tr_td5);
-		table_tbody_tr.appendChild(table_tbody_tr_td6);
 	}
 	
 	function createTable(event,time,realName,name,number,qq,phone,department,timeLength){
@@ -292,31 +283,19 @@
 		var table_thead=document.createElement("thead");
 		var table_thead_tr=document.createElement("tr");
 		var table_thead_tr_1=document.createElement("th");
-		table_thead_tr_1.style="width:18%";
+		table_thead_tr_1.style="width:40%";
 		table_thead_tr_1.innerHTML="姓名";
 		var table_thead_tr_2=document.createElement("th");
-		table_thead_tr_2.style="width:18%";
+		table_thead_tr_2.style="width:40%";
 		table_thead_tr_2.innerHTML="学号";
 		var table_thead_tr_3=document.createElement("th");
-		table_thead_tr_3.style="width:18%";
-		table_thead_tr_3.innerHTML="QQ";
-		var table_thead_tr_4=document.createElement("th");
-		table_thead_tr_4.style="width:18%";
-		table_thead_tr_4.innerHTML="手机";
-		var table_thead_tr_5=document.createElement("th");
-		table_thead_tr_5.style="width:18%";
-		table_thead_tr_5.innerHTML="院系";
-		var table_thead_tr_6=document.createElement("th");
-		table_thead_tr_6.style="width:10%";
-		table_thead_tr_6.innerHTML="时长";
+		table_thead_tr_3.style="width:20%";
+		table_thead_tr_3.innerHTML="时长";
 		table.appendChild(table_thead);
 		table_thead.appendChild(table_thead_tr);
 		table_thead_tr.appendChild(table_thead_tr_1);
 		table_thead_tr.appendChild(table_thead_tr_2);
 		table_thead_tr.appendChild(table_thead_tr_3);
-		table_thead_tr.appendChild(table_thead_tr_4);
-		table_thead_tr.appendChild(table_thead_tr_5);
-		table_thead_tr.appendChild(table_thead_tr_6);
 		
 		//table第二段
 		var table_tbody=document.createElement("tbody");
@@ -327,21 +306,12 @@
 		var table_tbody_tr_td2=document.createElement("td");
 		table_tbody_tr_td2.innerHTML=number;
 		var table_tbody_tr_td3=document.createElement("td");
-		table_tbody_tr_td3.innerHTML=qq;
-		var table_tbody_tr_td4=document.createElement("td");
-		table_tbody_tr_td4.innerHTML=phone;
-		var table_tbody_tr_td5=document.createElement("td");
-		table_tbody_tr_td5.innerHTML=department;
-		var table_tbody_tr_td6=document.createElement("td");
-		table_tbody_tr_td6.innerHTML=timeLength;
+		table_tbody_tr_td3.innerHTML=timeLength;
 		table.appendChild(table_tbody);
 		table_tbody.appendChild(table_tbody_tr);
 		table_tbody_tr.appendChild(table_tbody_tr_td1);
 		table_tbody_tr.appendChild(table_tbody_tr_td2);
 		table_tbody_tr.appendChild(table_tbody_tr_td3);
-		table_tbody_tr.appendChild(table_tbody_tr_td4);
-		table_tbody_tr.appendChild(table_tbody_tr_td5);
-		table_tbody_tr.appendChild(table_tbody_tr_td6);
 		
 	}
 </script>
