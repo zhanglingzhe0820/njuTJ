@@ -122,7 +122,7 @@
 
 	
 <div style="text-align:center">
-	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
+	<p class="footer" style="width:100%;position:fixed;z-index:-1;bottom:0;height:10%">
 		<small>
 			Version 0.1.1<br>
 		</small>
@@ -133,6 +133,9 @@
 </div>
 </body>
 <script>
+	var icons=["fa fa-cutlery","fa fa-flash","glyphicon glyphicon-glass","glyphicon glyphicon-asterisk","glyphicon glyphicon-tower","glyphicon glyphicon-fire",
+		"glyphicon glyphicon-piggy-bank","fa fa-code","fa fa-flag","fa fa-magnet","fa fa-magic","fa fa-rocket","fa fa-heart","fa fa-star","fa fa-puzzle-piece",
+		"fa fa-shield","fa fa-bullseye","fa fa-ticket","fa fa-compass","fa fa-bomb","fa fa-delicious","glyphicon glyphicon-cloud","glyphicon glyphicon-cog"];
 	function load(){
 		var xml;
 		var xmlHttp;
@@ -329,7 +332,7 @@
 		var row1=document.createElement("div");
 		row1.className="col-xs-3";
 		var row1i=document.createElement("i");
-		row1i.className="fa fa-cutlery fa-5x";
+		row1i.className=icons[Math.floor(Math.random()*(icons.length))]+" fa-5x";
 		var row2=document.createElement("div");
 		row2.className="col-xs-9 text-right";
 		var row2p=document.createElement("div");
