@@ -32,7 +32,9 @@
 			border-radius:20px;
 			-webkit-border-radius:20px;
 			padding:20px;
-			width:100%
+			width:100%;
+			white-space:pre-wrap;
+			text-align:center
 		}
 	</style>
 
@@ -77,15 +79,19 @@
 	<div class="fullwidthbanner-container">
 		<div class="fullwidthbanner">
 			<div id="board">
-				<h3 style="text-align:center">公告栏</h3>
-				<p style="text-align:center">天健社<br>
-				<p style="text-align:center">部门设置：活动部 全媒体 人资部 公关部 项目部</p><br>
-				<p style="text-align:center">17志愿者群号：</p><br>
-				<p style="text-align:center">658573828</p><br>
-				<p style="text-align:center">17年公益路漫漫</p><br>
-				<p style="text-align:center"></p><br>
-				<p style="text-align:center">服务社会，奉献爱心</p><br>
-				<p style="text-align:center">推己及人，薪火相传</p><br>
+<h2>公告栏</h2>
+<div id="posterContent">
+天健社
+部门设置：活动部 全媒体 人资部 公关部 项目部
+17志愿者群一群（已满）:
+658573828
+17志愿者群二群：
+112303768
+17年公益路漫漫
+				
+服务社会，奉献爱心
+推己及人，薪火相传
+</div>
 			</div>
 		</div>
 	</div>
@@ -124,7 +130,7 @@
 <div style="text-align:center">
 	<p class="footer" style="width:100%;position:fixed;z-index:-1;bottom:0;height:10%">
 		<small>
-			Version 0.1.1<br>
+			Version 0.1.6<br>
 		</small>
 		<small>
 			@Powered by Surevil & NJU TJ
@@ -204,6 +210,28 @@
 				break;
 			}
 		}
+		
+		//加载公告栏内容
+		var xmlPoster;
+		if(window.XMLHttpRequest){
+			xmlPoster=new XMLHttpRequest();
+		}
+		else{
+			xmlPoster=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xmlPoster.onreadystatechange=function(){
+			if(xmlPoster.readyState==4&&xmlPoster.status==200){
+				if(xmlPoster.responseText!="none"&&xmlPoster.responseText!=""&&xmlPoster.responseText!="error"){
+					temp=xmlPoster.responseText;
+					document.getElementById("posterContent").innerHTML=temp;
+				}
+			}
+		}
+		
+		xmlPoster.open("POST","/njuTJ/LoadWholeInfoServlet",true);
+		xmlPoster.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xmlPoster.send("kind=poster");
 	}
 	
 	function register(id,className){
@@ -369,7 +397,7 @@
 		
 		//第二块div
 		var more=document.createElement("a");
-		more.href="#";//详细信息页面
+		more.href="/njuTJ/detail.jsp?event="+event;//详细信息页面
 		var footer1=document.createElement("div");
 		footer1.className="panel-footer";
 		var footer1_span1=document.createElement("span");

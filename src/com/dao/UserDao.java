@@ -15,4 +15,8 @@ public interface UserDao {
 	public String loadArrange();
 	public String submitLength(String lengthMessages);
 	public void addEvent(String realName, String event, String recentTime);
+	public String loadDescribe(String event);
+	public String updateDescribe(String info);
+	public String updateWholeInfo(String kind, String content);
+	public String loadWholeInfo(String kind);
 }

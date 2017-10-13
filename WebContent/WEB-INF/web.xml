@@ -95,6 +95,47 @@
     <servlet-name>SubmitLengthServlet</servlet-name>
     <url-pattern>/SubmitLengthServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>DescribeServlet</servlet-name>
+    <servlet-class>com.servlet.DescribeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DescribeServlet</servlet-name>
+    <url-pattern>/DescribeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateDescribeServlet</servlet-name>
+    <servlet-class>com.servlet.UpdateDescribeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateDescribeServlet</servlet-name>
+    <url-pattern>/UpdateDescribeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdateWholeInfoServlet</servlet-name>
+    <servlet-class>com.servlet.UpdateWholeInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateWholeInfoServlet</servlet-name>
+    <url-pattern>/UpdateWholeInfoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LoadWholeInfoServlet</servlet-name>
+    <servlet-class>com.servlet.LoadWholeInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoadWholeInfoServlet</servlet-name>
+    <url-pattern>/LoadWholeInfoServlet</url-pattern>
+  </servlet-mapping>
+
 
   
   <filter>

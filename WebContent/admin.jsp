@@ -25,6 +25,19 @@
 	<script src="resources/vendor/sb-admin-2/sb-admin-2.min.js"></script>
 	
 <title>南京大学天健社</title>
+<style>
+		#board{
+			border:solid 5px blue;
+			border-radius:20px;
+			-moz-border-radius:20px;
+			border-radius:20px;
+			-webkit-border-radius:20px;
+			padding:20px;
+			width:100%;
+			white-space:pre-wrap;
+			text-align:center
+		}
+</style>
 </head>
 <body onload="load();">
 <div>
@@ -42,7 +55,26 @@
 			<a class="navbar-brand" href="adminLogout.action">管理员登出</a>
 		</div>
 	</nav>
-	
+		<div class="fullwidthbanner-container">
+			<div class="fullwidthbanner">
+				<div id="board">
+<h2>公告栏</h2>
+<div id="posterContent">
+天健社
+部门设置：活动部 全媒体 人资部 公关部 项目部
+17志愿者群一群（已满）:
+658573828
+17志愿者群二群：
+112303768
+17年公益路漫漫
+				
+服务社会，奉献爱心
+推己及人，薪火相传
+</div>
+<button type="button" class="btn btn-default btn-lg" onclick="posterButton()" id="posterButton">修改</button>
+			</div>
+		</div>
+	</div>
 	<div >
 		<div>
 			<div>
@@ -80,7 +112,7 @@
 <div style="text-align:center">
 	<p class="footer" style="width:100%;position:fixed;z-index:-1;bottom:0;height:10%">
 		<small>
-			Version 0.1.1<br>
+			Version 0.1.6<br>
 		</small>
 		<small>
 			@Powered by Surevil & NJU TJ
@@ -89,6 +121,60 @@
 </div>
 </body>
 <script>
+function posterButton(){
+	if(document.getElementById("posterButton").innerHTML=="提交"){
+		submitPoster();
+	}
+	else{
+		modifyPoster();
+	}
+}
+
+function modifyPoster(){
+	var value=document.getElementById("posterContent").innerHTML;
+	var postArea=document.createElement("textarea");
+	postArea.id="posterContent";
+	postArea.className="form-control";
+	postArea.style="text-align:center;height:expression((this.scrollHeight>150)?'150px':(this.scrollHeight+5)+'px');overflow:auto;";
+	postArea.innerHTML=value;
+	document.getElementById("board").replaceChild(postArea,document.getElementById("posterContent"));
+	document.getElementById("posterButton").innerHTML="提交";
+}
+
+function submitPoster(){
+	var xml;
+	var temp;
+	var content=document.getElementById("posterContent").value;
+	
+	if(window.XMLHttpRequest){
+		xml=new XMLHttpRequest();
+	}
+	else{
+		xml=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	xml.onreadystatechange=function(){
+		if(xml.readyState==4&&xml.status==200){
+			temp=xml.responseText;
+			if(temp=="success"){
+				alert("提交成功");
+				var postArea=document.createElement("div");
+				postArea.id="posterContent";
+				postArea.innerHTML=content;
+				document.getElementById("board").replaceChild(postArea,document.getElementById("posterContent"));
+				document.getElementById("posterButton").innerHTML="修改";
+			}
+			else{
+				alert("提交失败，请稍后重试");
+			}
+		}
+	}
+	
+	xml.open("POST","/njuTJ/UpdateWholeInfoServlet",true);
+	xml.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xml.send("kind=poster"+"&content="+content);
+}
+
 var icons=["fa fa-cutlery","fa fa-flash","glyphicon glyphicon-glass","glyphicon glyphicon-asterisk","glyphicon glyphicon-tower","glyphicon glyphicon-fire",
 	"glyphicon glyphicon-piggy-bank","fa fa-code","fa fa-flag","fa fa-magnet","fa fa-magic","fa fa-rocket","fa fa-heart","fa fa-star","fa fa-puzzle-piece",
 	"fa fa-shield","fa fa-bullseye","fa fa-ticket","fa fa-compass","fa fa-bomb","fa fa-delicious","glyphicon glyphicon-cloud","glyphicon glyphicon-cog"];
@@ -136,6 +222,28 @@ var icons=["fa fa-cutlery","fa fa-flash","glyphicon glyphicon-glass","glyphicon 
 		
 		xml.open("GET","/njuTJ/AmountServlet",true);
 		xml.send();
+		
+		//加载公告栏内容
+		var xmlHttp;
+		if(window.XMLHttpRequest){
+			xmlHttp=new XMLHttpRequest();
+		}
+		else{
+			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xmlHttp.onreadystatechange=function(){
+			if(xmlHttp.readyState==4&&xmlHttp.status==200){
+				if(xmlHttp.responseText!="none"&&xmlHttp.responseText!=""&&xmlHttp.responseText!="error"){
+					temp=xmlHttp.responseText;
+					document.getElementById("posterContent").innerHTML=temp;
+				}
+			}
+		}
+		
+		xmlHttp.open("POST","/njuTJ/LoadWholeInfoServlet",true);
+		xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xmlHttp.send("kind=poster");
 		
 		//验证登录
 		var cookies=document.cookie.split(";");
@@ -263,7 +371,7 @@ var icons=["fa fa-cutlery","fa fa-flash","glyphicon glyphicon-glass","glyphicon 
 		
 		//第二块div
 		var more=document.createElement("a");
-		more.href="#";//详细信息页面
+		more.href="/njuTJ/adminDetail.jsp?event="+event;//详细信息页面
 		var footer1=document.createElement("div");
 		footer1.className="panel-footer";
 		var footer1_span1=document.createElement("span");

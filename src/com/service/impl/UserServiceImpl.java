@@ -131,4 +131,48 @@ public class UserServiceImpl implements UserService {
 			return false;
 		}
 	}
+
+	@Override
+	public String loadDescribe(String event) {
+		try{
+			return userDao.loadDescribe(event);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return "error";
+		}
+	}
+
+	@Override
+	public String updateDescribe(String info) {
+		try{
+			return userDao.updateDescribe(info);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return "error";
+		}
+	}
+
+	@Override
+	public String updateWholeInfo(String kind,String content) {
+		try{
+			return userDao.updateWholeInfo(kind,content);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return "error";
+		}
+	}
+	
+	@Override
+	public String loadWholeInfo(String kind) {
+		try{
+			return userDao.loadWholeInfo(kind);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return "error";
+		}
+	}
 }

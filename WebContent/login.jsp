@@ -71,12 +71,12 @@
                         <div class="panel-heading">
                             <h4 style="text-align:center">登录</h4>
                         </div>
-                        <div class="panel-body">
-                            <form action="login.action" role="form">
+                        <div class="panel-body" id="loginPanel">
+                            <form action="" role="form" id="loginForm">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="学号" name="number" type="text" value="">
+                                    <input class="form-control" placeholder="学号" name="number" type="text" value="" id="number">
                                 </div>
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value="登录">
+                                <input type="button" class="btn btn-lg btn-success btn-block" onclick="login()" value="登录">
                             </form>
                         </div>
                         <div class="panel-footer">
@@ -91,7 +91,7 @@
 <div style="text-align:center">
 	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
 		<small>
-			Version 0.1.1<br>
+			Version 0.1.6<br>
 		</small>
 		<small>
 			@Powered by Surevil & NJU TJ
@@ -100,4 +100,52 @@
 </div>
 
 </body>
+<script>
+function login(){
+	var i;
+	var xml;
+	var temp;
+	var number=document.getElementById("number").value;
+	
+	if(window.XMLHttpRequest){
+		xml=new XMLHttpRequest();
+	}
+	else{
+		xml=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	xml.onreadystatechange=function(){
+		if(xml.readyState==4&&xml.status==200){
+			temp=xml.responseText;
+			if(temp=="success"){
+				alert("登录成功");
+				window.location="/njuTJ/index.jsp";
+			}
+			else if(temp=="empty"){
+				addPrompt("学号不能为空");
+			}
+			else{
+				addPrompt("学号错误，检查是否输入正确，或先注册");
+			}
+		}
+	}
+	
+	xml.open("POST","/njuTJ/LoginServlet",true);
+	xml.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xml.send("&number="+number);
+}
+
+function addPrompt(str){
+	if(document.getElementById("loginPrompt")){
+		document.getElementById("loginPrompt").innerHTML=str;
+	}
+	else{
+		var prompt=document.createElement("div");
+		prompt.id="loginPrompt";
+		prompt.className="alert alert-danger";
+		prompt.innerHTML=str;
+		document.getElementById("loginPanel").insertBefore(prompt,document.getElementById("loginForm"));
+	}
+}
+</script>
 </html>

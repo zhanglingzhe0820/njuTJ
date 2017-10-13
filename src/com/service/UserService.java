@@ -15,4 +15,8 @@ public interface UserService {
 	public boolean stopRegister(String recentTime,String event);
 	public String submitLength(String lengthMessages);
 	public boolean addEvent(String realName,String event,String recentTime);
+	public String loadDescribe(String event);
+	public String updateDescribe(String parameter);
+	public String updateWholeInfo(String kind,String content);
+	public String loadWholeInfo(String kind);
 }

@@ -36,10 +36,13 @@
 			<a class="navbar-brand" href="index.jsp">报名活动</a>
 		</div>
 		<div>
+			<a class="navbar-brand" href="arrange.jsp">活动统计</a>
+		</div>
+		<div>
 			<a class="navbar-brand" href="index.jsp">招新报名</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="login.jsp">管理员登录</a>
+			<a class="navbar-brand" href="adminLogin.jsp">管理员登录</a>
 		</div>
 		<ul class="nav navbar-top-links navbar-right">
 			<li class="dropdown">
@@ -91,7 +94,7 @@
 <div style="text-align:center">
 	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
 		<small>
-			Version 0.1.1<br>
+			Version 0.1.6<br>
 		</small>
 		<small>
 			@Powered by Surevil & NJU TJ

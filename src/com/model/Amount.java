@@ -7,6 +7,7 @@ public class Amount {
 	private int canRegister;
 	private int recentTime;
 	private String realName;
+	private String info;
 	
 	public void setId(int id){
 		this.id=id;
@@ -46,5 +47,13 @@ public class Amount {
 	
 	public String getRealName(){
 		return realName;
+	}
+	
+	public void setInfo(String info){
+		this.info=info;
+	}
+	
+	public String getInfo(){
+		return info;
 	}
 }

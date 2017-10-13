@@ -42,6 +42,7 @@
 				<value>com/model/Event.hbm.xml</value>
 				<value>com/model/Amount.hbm.xml</value>
 				<value>com/model/EventTime.hbm.xml</value>
+				<value>com/model/Whole.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
