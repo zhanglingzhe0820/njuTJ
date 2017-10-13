@@ -160,7 +160,7 @@
 </div>
 
 <div style="text-align:center">
-	<p class="footer" style="width:100%;position:fixed;z-index:0;bottom:0;height:10%">
+	<p class="footer" style="width:100%;position:fixed;z-index:-1;bottom:0;height:10%">
 		<small>
 			Version 0.1.6<br>
 		</small>
@@ -213,7 +213,7 @@ function load(){
 			temp=xml.responseText;
 			infos=temp.split("|");
 			title.innerHTML=infos[0];
-			if(infos.length>number){
+			if(infos.length>1){
 				for(i=1;i<infos.length;i+=2){
 					var index=Math.floor(i/2)+1;
 					document.getElementById("event_content_title"+index).value=infos[i];
@@ -241,7 +241,7 @@ function submit(){
 	var i=0;
 	var xml;
 	var temp;
-	var info=location.search.split("=")[1]+":";
+	var info=location.search.split("=")[1]+"@#";
 	
 	for(i=0;i<number-1;i++){
 		info+=document.getElementById("event_content_title"+(i+1)).value;

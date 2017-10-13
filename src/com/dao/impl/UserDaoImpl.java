@@ -414,8 +414,8 @@ public class UserDaoImpl implements UserDao {
 	public String updateDescribe(String info) {
 		Session session=sessionFactory.openSession();
 		
-		String event=info.split(":")[0];
-		String infos=info.split(":")[1];
+		String event=info.split("@#")[0];
+		String infos=info.split("@#")[1];
 		
 		try{
 			String hql="update Amount set info=? where event=?";
