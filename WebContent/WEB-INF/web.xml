@@ -135,6 +135,14 @@
     <servlet-name>LoadWholeInfoServlet</servlet-name>
     <url-pattern>/LoadWholeInfoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>UploadUserInfoServlet</servlet-name>
+    <servlet-class>com.servlet.UploadUserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadUserInfoServlet</servlet-name>
+    <url-pattern>/UploadUserInfoServlet</url-pattern>
+  </servlet-mapping>
 
 
   

@@ -19,4 +19,5 @@ public interface UserService {
 	public String updateDescribe(String parameter);
 	public String updateWholeInfo(String kind,String content);
 	public String loadWholeInfo(String kind);
+	public String updateUserInfo(String userInfo);
 }

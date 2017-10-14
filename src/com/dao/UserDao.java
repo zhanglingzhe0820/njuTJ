@@ -19,4 +19,5 @@ public interface UserDao {
 	public String updateDescribe(String info);
 	public String updateWholeInfo(String kind, String content);
 	public String loadWholeInfo(String kind);
+	public String upLoadUserInfo(String userInfo);
 }

@@ -54,6 +54,17 @@
 		<div>
 			<a class="navbar-brand" href="adminLogout.action">管理员登出</a>
 		</div>
+		<ul class="nav navbar-top-links navbar-right">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					<i class="fa fa-wrench fa-fw"></i> <i class="fa fa-caret-down"></i>
+				</a>
+				<ul class="dropdown-menu dropdown-users">
+					<li><a href="uploadUserInfo.jsp"><i class="fa fa-upload fa-fw"></i> 导入用户信息</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
 	</nav>
 		<div class="fullwidthbanner-container">
 			<div class="fullwidthbanner">
@@ -177,7 +188,7 @@ function submitPoster(){
 
 var icons=["fa fa-cutlery","fa fa-flash","glyphicon glyphicon-glass","glyphicon glyphicon-asterisk","glyphicon glyphicon-tower","glyphicon glyphicon-fire",
 	"glyphicon glyphicon-piggy-bank","fa fa-code","fa fa-flag","fa fa-magnet","fa fa-magic","fa fa-rocket","fa fa-heart","fa fa-star","fa fa-puzzle-piece",
-	"fa fa-shield","fa fa-bullseye","fa fa-ticket","fa fa-compass","fa fa-bomb","fa fa-delicious","glyphicon glyphicon-cloud","glyphicon glyphicon-cog"];
+	"fa fa-shield","fa fa-bullseye","fa fa-ticket","fa fa-compass","fa fa-bomb","fa fa-delicious","glyphicon glyphicon-cloud","glyphicon glyphicon-cog","fa fa-tint","fa fa-adjust","fa fa-map-maker"];
 	function load(){
 		var xml;
 		var number;

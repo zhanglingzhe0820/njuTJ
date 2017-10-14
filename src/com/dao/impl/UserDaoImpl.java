@@ -50,6 +50,7 @@ public class UserDaoImpl implements UserDao {
 		user.setNumber(number);
 		user.setDepartment(department);
 		user.setName(name);
+		user.setPosition("社外人员");
 		session.save(user);
 		session.close();
 	}
@@ -392,6 +393,7 @@ public class UserDaoImpl implements UserDao {
 		amount.setEvent(event);
 		amount.setRealName(realName);
 		amount.setRecentTime(Integer.parseInt(recentTime));
+		amount.setInfo("活动时间| |活动描述| |活动时长描述| |活动负责人| |活动群号| |活动人数限制| |活动注意事项| ");
 		session.save(amount);
 		session.close();
 	}
@@ -481,6 +483,45 @@ public class UserDaoImpl implements UserDao {
 			session.close();
 		}
 		
+	}
+
+	@Override
+	public String upLoadUserInfo(String userInfo) {
+		Session session=sessionFactory.openSession();
+		List<Object> list;
+		String[] userInfos=userInfo.split("@#");
+		String[] temps;
+		
+		try{
+			for(int i=0;i<userInfos.length;i++){
+				temps=userInfos[i].split("\\|");
+				String hql="update User user set qq=?,phone=?,department=?,position=? where number=? and name=?";
+				Query q=session.createQuery(hql);
+				q.setParameter(0, temps[4]);
+				q.setParameter(1, temps[3]);
+				q.setParameter(2, temps[2]);
+				q.setParameter(3, temps[0]);
+				q.setParameter(4, temps[5]);
+				q.setParameter(5, temps[1]);
+				int n=q.executeUpdate();
+				if(n==0){
+					User user=new User();
+					user.setQq(temps[4]);
+					user.setPhone(temps[3]);
+					user.setNumber(temps[5]);
+					user.setDepartment(temps[2]);
+					user.setName(temps[1]);
+					user.setPosition(temps[0]);
+					session.save(user);
+				}
+			}
+			return "success";
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return "fail";
+		}finally{
+			session.close();
+		}
 	}
 
 }

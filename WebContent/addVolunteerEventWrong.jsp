@@ -41,6 +41,17 @@
 		<div>
 			<a class="navbar-brand" href="adminLogout.action">管理员登出</a>
 		</div>
+		<ul class="nav navbar-top-links navbar-right">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+					<i class="fa fa-wrench fa-fw"></i> <i class="fa fa-caret-down"></i>
+				</a>
+				<ul class="dropdown-menu dropdown-users">
+					<li><a href="uploadUserInfo.jsp"><i class="fa fa-upload fa-fw"></i> 导入用户信息</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
 	</nav>
 	
 	<div style="height:100px"></div>

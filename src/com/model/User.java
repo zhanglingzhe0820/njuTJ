@@ -8,13 +8,16 @@ public class User {
     private String number;
     private String department;
     private String name;
+    private String position;
     
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public void setQq(String qq){
 		this.qq=qq;
 	}
@@ -53,6 +56,14 @@ public class User {
 	
 	public String getName(){
 		return name;
+	}
+	
+	public void setPosition(String position){
+		this.position=position;
+	}
+	
+	public String getPosition(){
+		return position;
 	}
     
 }

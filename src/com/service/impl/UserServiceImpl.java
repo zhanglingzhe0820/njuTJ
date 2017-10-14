@@ -175,4 +175,15 @@ public class UserServiceImpl implements UserService {
 			return "error";
 		}
 	}
+
+	@Override
+	public String updateUserInfo(String userInfo) {
+		try{
+			return userDao.upLoadUserInfo(userInfo);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return "error";
+		}
+	}
 }

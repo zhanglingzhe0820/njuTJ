@@ -33,28 +33,21 @@
 			<a class="navbar-brand"  style="border-right:1px solid #dddddd" href="">南京大学天健社</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="index.jsp">报名活动</a>
+			<a class="navbar-brand" href="adminArrange.jsp">活动统计</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="arrange.jsp">活动统计</a>
+			<a class="navbar-brand" href="admin.jsp">活动管理</a>
 		</div>
 		<div>
-			<a class="navbar-brand" href="index.jsp">招新报名</a>
-		</div>
-		<div>
-			<a class="navbar-brand" href="adminLogin.jsp">管理员登录</a>
+			<a class="navbar-brand" href="adminLogout.action">管理员登出</a>
 		</div>
 		<ul class="nav navbar-top-links navbar-right">
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-					<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+					<i class="fa fa-wrench fa-fw"></i> <i class="fa fa-caret-down"></i>
 				</a>
 				<ul class="dropdown-menu dropdown-users">
-					<li><a href="login.jsp"><i class="fa fa-sign-in fa-fw"></i> 登录</a>
-					</li>
-					<li><a href="SignUp.jsp"><i class="fa fa-list-alt fa-fw"></i> 注册</a>
-					</li>
-					<li><a href="logout.action"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+					<li><a href="uploadUserInfo.jsp"><i class="fa fa-upload fa-fw"></i> 导入用户信息</a>
 					</li>
 				</ul>
 			</li>
