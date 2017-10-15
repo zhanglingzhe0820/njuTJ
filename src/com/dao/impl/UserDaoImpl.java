@@ -42,17 +42,37 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void insertUser(String qq, String phone, String number, String department, String name) {
+	public String insertUser(String qq, String phone, String number, String department, String name) {
 		Session session=sessionFactory.openSession();
-		User user=new User();
-		user.setQq(qq);
-		user.setPhone(phone);
-		user.setNumber(number);
-		user.setDepartment(department);
-		user.setName(name);
-		user.setPosition("社外人员");
-		session.save(user);
-		session.close();
+		List<Object> list;
+		
+		try{
+			//判断是否已经存在该用户，判断条件：学号+姓名
+			String hql="from User user where user.number=? and user.name=?";
+			Query q=session.createQuery(hql);
+			q.setParameter(0, number);
+			q.setParameter(1, name);
+			list=q.list();
+			if(!list.isEmpty()){
+				return "already";
+			}
+		
+			//保存该用户
+			User user=new User();
+			user.setQq(qq);
+			user.setPhone(phone);
+			user.setNumber(number);
+			user.setDepartment(department);
+			user.setName(name);
+			user.setPosition("社外人员");
+			session.save(user);
+			return "success";
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return "fail";
+		}finally{
+			session.close();
+		}
 	}
 
 	@SuppressWarnings("unchecked")

@@ -17,6 +17,7 @@ public class SignUpAction extends BaseAction{
 
 	
 	private static final long serialVersionUID = 1L;
+	private static final String ALREADY = "already";
 	
 	private UserService userService=new UserServiceImpl();
 	
@@ -28,7 +29,11 @@ public class SignUpAction extends BaseAction{
 	
 	@SuppressWarnings("deprecation")
 	public String execute() throws Exception{
-		if(userService.signUp(qq, phone, number, department, name)){
+		String result=userService.signUp(qq, phone, number, department, name);
+		if(result.equals("already")){
+			return ALREADY;
+		}
+		else if(result.equals("success")){
 			Cookie cookie=new Cookie("njuTJ",qq+"_"+phone+"_"+number+"_"+URLEncoder.encode(department)+"_"+URLEncoder.encode(name));
 			cookie.setMaxAge(60*60*24);
 			ServletActionContext.getResponse().addCookie(cookie);

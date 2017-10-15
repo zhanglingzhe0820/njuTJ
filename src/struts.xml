@@ -9,6 +9,8 @@
 		<action name="signUp" class="com.action.SignUpAction">
 			<result name="success">index.jsp</result>
 			<result name="input">SignUpWrong.jsp</result>
+			<result name="already">SignUpAlready.jsp</result>
+			<result name="error">SignUpWrong.jsp</result>
 		</action>
 		<action name="logout" class="com.action.LogoutAction">
 			<result name="success">index.jsp</result>

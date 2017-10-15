@@ -72,8 +72,8 @@
                             <h4 style="text-align:center">注册</h4>
                         </div>
                         <div class="panel-body">
-                        	<div class="alert alert-danger">
-                                必填项为空
+                        	<div class="alert alert-warning">
+                               您已经注册过
                             </div>
                             <form action="signUp.action" role="form">
                                 <div class="form-group">

@@ -19,9 +19,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean signUp(String qq, String phone, String number, String department, String name) {
-		userDao.insertUser(qq,phone,number,department,name);
-		return true;
+	public String signUp(String qq, String phone, String number, String department, String name) {
+		return userDao.insertUser(qq,phone,number,department,name);
 	}
 
 	@Override
