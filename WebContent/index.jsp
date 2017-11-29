@@ -141,7 +141,7 @@
 <script>
 	var icons=["fa fa-cutlery","fa fa-flash","glyphicon glyphicon-glass","glyphicon glyphicon-asterisk","glyphicon glyphicon-tower","glyphicon glyphicon-fire",
 		"glyphicon glyphicon-piggy-bank","fa fa-code","fa fa-flag","fa fa-magnet","fa fa-magic","fa fa-rocket","fa fa-heart","fa fa-star","fa fa-puzzle-piece",
-		"fa fa-shield","fa fa-bullseye","fa fa-ticket","fa fa-compass","fa fa-bomb","fa fa-delicious","glyphicon glyphicon-cloud","glyphicon glyphicon-cog","fa fa-tint","fa fa-adjust","fa fa-map-maker"];
+		"fa fa-shield","fa fa-bullseye","fa fa-ticket","fa fa-compass","fa fa-bomb","fa fa-delicious","glyphicon glyphicon-cloud","glyphicon glyphicon-cog","fa fa-tint","fa fa-adjust"];
 	function load(){
 		var xml;
 		var xmlHttp;
