@@ -1,30 +1,41 @@
-package org.njuTJ.model;
+package org.njuTJ.model.User;
 
+import org.springframework.stereotype.Component;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "User")
 public class User {
-    private int id;
-    private String qq;
-    private String phone;
+    @Id
+    @Column(name = "number")
     private String number;
+    @Column(name = "qq")
+    private String qq;
+    @Column(name = "phone")
+    private String phone;
+    @Column(name = "department")
     private String department;
+    @Column(name = "name")
     private String name;
+    @Column(name = "position")
     private String position;
 
-    public User(int id, String qq, String phone, String number, String department, String name, String position) {
-        this.id = id;
+
+    public User() {
+
+    }
+
+    public User(String qq, String phone, String number, String department, String name, String position) {
         this.qq = qq;
         this.phone = phone;
         this.number = number;
         this.department = department;
         this.name = name;
         this.position = position;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getQq() {
