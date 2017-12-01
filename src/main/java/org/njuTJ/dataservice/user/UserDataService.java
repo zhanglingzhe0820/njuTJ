@@ -1,7 +1,7 @@
 package org.njuTJ.dataservice.user;
 
-import org.njuTJ.model.ResultMessage;
-import org.njuTJ.model.User.User;
+import org.njuTJ.vo.ResultMessage;
+import org.njuTJ.entity.User.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,4 +34,12 @@ public interface UserDataService {
      */
     @Transactional
     ResultMessage insertUser(User user);
+
+    /**
+     * delete a user
+     * @param number student number
+     * @return whether the operation is success or not
+     */
+    @Transactional
+    ResultMessage deleteUser(String number);
 }

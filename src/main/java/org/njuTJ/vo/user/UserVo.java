@@ -1,41 +1,33 @@
-package org.njuTJ.model.User;
+package org.njuTJ.vo.user;
 
-import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.njuTJ.entity.User.User;
 
-@Entity
-@Table(name = "User")
-public class User {
-    @Id
-    @Column(name = "number")
+public class UserVo {
     private String number;
-    @Column(name = "qq")
     private String qq;
-    @Column(name = "phone")
     private String phone;
-    @Column(name = "department")
     private String department;
-    @Column(name = "name")
     private String name;
-    @Column(name = "position")
     private String position;
+    private String password;
 
-
-    public User() {
-
-    }
-
-    public User(String qq, String phone, String number, String department, String name, String position) {
+    public UserVo(String number, String qq, String phone, String department, String name, String position, String password) {
+        this.number = number;
         this.qq = qq;
         this.phone = phone;
-        this.number = number;
         this.department = department;
         this.name = name;
         this.position = position;
+        this.password = password;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getQq() {
@@ -52,14 +44,6 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
     }
 
     public String getDepartment() {
@@ -84,5 +68,13 @@ public class User {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

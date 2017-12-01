@@ -4,8 +4,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.njuTJ.MainApplication;
 import org.njuTJ.blservice.user.UserBlService;
-import org.njuTJ.model.ResultMessage;
-import org.njuTJ.model.User.User;
+import org.njuTJ.vo.ResultMessage;
+import org.njuTJ.entity.User.User;
+import org.njuTJ.vo.user.LoginVo;
+import org.njuTJ.vo.user.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -19,13 +21,28 @@ import static org.junit.Assert.*;
 @EnableTransactionManagement
 @WebAppConfiguration
 public class UserBlServiceTest {
-    User user = new User("0", "0", "0", "0", "0", "0");
+    UserVo userVo = new UserVo("0", "0", "0", "0", "0", "0", "0");
+    LoginVo loginVo = new LoginVo("0", "0");
     @Autowired
     private UserBlService userBlService;
 
     @Test
     public void register() throws Exception {
-        assertEquals(ResultMessage.Success, userBlService.register(user));
+        assertEquals(ResultMessage.Success, userBlService.register(userVo));
+        userBlService.drop(userVo.getNumber());
+    }
+
+    @Test
+    public void drop() throws Exception{
+        userBlService.register(userVo);
+        assertEquals(ResultMessage.Success,userBlService.drop(userVo.getNumber()));
+    }
+
+    @Test
+    public void login() throws Exception {
+        userBlService.register(userVo);
+        assertEquals(ResultMessage.Success, userBlService.login(loginVo));
+        userBlService.drop(userVo.getNumber());
     }
 
 }

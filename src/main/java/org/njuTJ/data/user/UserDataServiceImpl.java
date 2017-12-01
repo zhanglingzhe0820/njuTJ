@@ -2,8 +2,8 @@ package org.njuTJ.data.user;
 
 import org.njuTJ.data.dao.user.UserDao;
 import org.njuTJ.dataservice.user.UserDataService;
-import org.njuTJ.model.ResultMessage;
-import org.njuTJ.model.User.User;
+import org.njuTJ.vo.ResultMessage;
+import org.njuTJ.entity.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +42,6 @@ public class UserDataServiceImpl implements UserDataService {
     @Transactional
     public User getUserByNumber(String number) {
         try{
-            System.out.println(userDao);
             return userDao.findOne(number);
         }catch (Exception e){
             e.printStackTrace();
@@ -61,6 +60,23 @@ public class UserDataServiceImpl implements UserDataService {
     public ResultMessage insertUser(User user) {
         try{
             userDao.save(user);
+            return ResultMessage.Success;
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultMessage.SystemError;
+        }
+    }
+
+    /**
+     * delete a user
+     *
+     * @param number student number
+     * @return whether the operation is success or not
+     */
+    @Override
+    public ResultMessage deleteUser(String number) {
+        try{
+            userDao.delete(number);
             return ResultMessage.Success;
         }catch (Exception e){
             e.printStackTrace();

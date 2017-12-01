@@ -1,4 +1,4 @@
-package org.njuTJ.model;
+package org.njuTJ.vo;
 
 public enum ResultMessage {
     Success,
